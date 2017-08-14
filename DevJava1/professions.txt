@@ -1,3 +1,0 @@
-Engineer 15000 Ivan 16000
-Engineer 15000 Mykola 18000
-Cleaner 5000
