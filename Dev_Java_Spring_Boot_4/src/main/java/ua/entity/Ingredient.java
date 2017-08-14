@@ -8,10 +8,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ingredient")
-public class Ingredient extends AbstractEntityName{
+@Table(name = "ingredient")
+public class Ingredient extends AbstractEntityName {
 
-	@ManyToMany(mappedBy="ingredients")
+	public Ingredient() {
+	}
+
+	public Ingredient(String name) {
+		super(name);
+	}
+
+	@ManyToMany(mappedBy = "ingredients")
 	private List<Meal> meals = new ArrayList<>();
 
 	public List<Meal> getMeals() {
