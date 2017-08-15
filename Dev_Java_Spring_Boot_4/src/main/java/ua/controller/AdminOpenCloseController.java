@@ -1,5 +1,7 @@
 package ua.controller;
 
+import java.time.LocalTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,39 +11,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ua.entity.Ingredient;
-import ua.service.IngredientService;
+import ua.entity.OpenClose;
+import ua.service.OpenCloseService;
 
 @Controller
-@RequestMapping("/admin/ingredient")
-public class AdminIngredientController {
-
-	private final IngredientService service;
-
+@RequestMapping("/admin/time")
+public class AdminOpenCloseController {
+	
+private final OpenCloseService service;
+	
 	@Autowired
-	public AdminIngredientController(IngredientService service) {
-		this.service = service;
+	public AdminOpenCloseController(OpenCloseService service) {
+		this.service=service;
 	}
 	
 	@GetMapping
 	public String show(Model model) {
-		model.addAttribute("ingredients", service.findAll());
-		return "ingredient";
+		model.addAttribute("times",service.findAll());
+		return "time";
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
 		service.delete(id);
-		return "redirect:/admin/ingredient";
+		return "redirect:/admin/time";
 	}
 	
 	@PostMapping
-	public String save(@RequestParam String name) {
-		service.save(new Ingredient(name));
-		return "redirect:/admin/ingredient";
+	public String save(@RequestParam int hh,@RequestParam int hv) {
+		service.save(new OpenClose(LocalTime.of(hh, hv)));
+		return "redirect:/admin/time";
 	}
-	
-	
-	
-	
 }

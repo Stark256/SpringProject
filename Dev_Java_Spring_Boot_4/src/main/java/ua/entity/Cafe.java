@@ -50,6 +50,17 @@ public class Cafe extends AbstractEntityName{
 	@OneToMany(mappedBy="cafe")
 	private List<Meal> meals = new ArrayList<>();
 	
+	@OneToMany(mappedBy="cafe")
+	private List<CafeComment> comment;
+	
+	
+	
+	public List<CafeComment> getComment() {
+		return comment;
+	}
+	public void setComment(List<CafeComment> comment) {
+		this.comment = comment;
+	}
 	public List<Meal> getMeals() {
 		return meals;
 	}

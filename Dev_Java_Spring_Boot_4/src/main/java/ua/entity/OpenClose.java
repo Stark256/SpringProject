@@ -20,12 +20,15 @@ public class OpenClose extends AbstractEntity{
 	
 	private LocalTime time;
 	
+
+
+	public OpenClose() {
+	}
+	
 	public OpenClose(LocalTime time) {
 		this.time = time;
 	}
 
-	public OpenClose() {
-	}
 
 	public List<Cafe> getOpenedCafes() {
 		return openedCafes;
