@@ -11,17 +11,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cafe_comment")
-public class CafeComment extends AbstractEntity{
-	
+@Table(name="meal_comment")
+public class MealComment  extends AbstractEntity{
 	@Lob
 	private String comment;
 	
 	@ManyToOne
-	private CafeComment parentComment;
+	private MealComment parentComment;
 	
 	@OneToMany(mappedBy="parentComment")
-	private List<CafeComment> childComment = new ArrayList<CafeComment>();
+	private List<MealComment> childComment = new ArrayList<MealComment>();
 	
 	private int likee;
 	
@@ -29,9 +28,9 @@ public class CafeComment extends AbstractEntity{
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private User user;
-	
+
 	@ManyToOne(fetch=FetchType.LAZY)
-	private Cafe cafe;
+	private Meal meal;
 
 	public String getComment() {
 		return comment;
@@ -41,19 +40,19 @@ public class CafeComment extends AbstractEntity{
 		this.comment = comment;
 	}
 
-	public CafeComment getParentComment() {
+	public MealComment getParentComment() {
 		return parentComment;
 	}
 
-	public void setParentComment(CafeComment parentComment) {
+	public void setParentComment(MealComment parentComment) {
 		this.parentComment = parentComment;
 	}
 
-	public List<CafeComment> getChildComment() {
+	public List<MealComment> getChildComment() {
 		return childComment;
 	}
 
-	public void setChildComment(List<CafeComment> childComment) {
+	public void setChildComment(List<MealComment> childComment) {
 		this.childComment = childComment;
 	}
 
@@ -81,12 +80,12 @@ public class CafeComment extends AbstractEntity{
 		this.user = user;
 	}
 
-	public Cafe getCafe() {
-		return cafe;
+	public Meal getMeal() {
+		return meal;
 	}
 
-	public void setCafe(Cafe cafe) {
-		this.cafe = cafe;
+	public void setMeal(Meal meal) {
+		this.meal = meal;
 	}
 	
 	
