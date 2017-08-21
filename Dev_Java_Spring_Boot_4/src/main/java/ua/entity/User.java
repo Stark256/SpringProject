@@ -32,6 +32,25 @@ public class User  extends AbstractEntity{
 	@OneToMany(mappedBy="user")
 	private List<MealComment> mealComment=new ArrayList<MealComment>();
 
+	
+	
+	public User() {
+	}
+
+	
+	
+	public User(String firstName, String lastName, String email, String login, String password, LocalDate birthday) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.login = login;
+		this.password = password;
+		this.birthday = birthday;
+	}
+
+
+
 	public String getFirstName() {
 		return firstName;
 	}

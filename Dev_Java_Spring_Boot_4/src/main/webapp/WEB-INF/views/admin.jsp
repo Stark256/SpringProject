@@ -13,6 +13,8 @@
 	<a href="/admin/ingredient">Ingredient</a>
 	<br>
 	<a href="/admin/time">Time</a>
+	<br>
+	<a href="/admin/user">Users</a>
 	
 </body>
 </html>
