@@ -44,9 +44,9 @@ public class AdminCuisineController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("cuisine") Cuisine cuisine) {
+	public String save(@ModelAttribute("cuisine") Cuisine cuisine,SessionStatus status) {
 		service.save(cuisine);
-		return "redirect:/admin/cuisine";
+		return cancel(status);
 	}
 	@GetMapping("cancel")
 	public String cancel(SessionStatus status){

@@ -1,7 +1,22 @@
 package ua.service;
 
-import ua.entity.Meal;
+import java.util.List;
 
-public interface MealService extends CrudService<Meal,Integer>{
+import ua.model.request.MealRequest;
+import ua.model.view.MealView;
+
+public interface MealService {
+
+	List<String> findAllCuisines();
+
+	List<String> findAllIngredients();
+
+	List<MealView> findAllViews();
+
+	void save(MealRequest request);
+
+	MealRequest findOne(Integer id);
+
+	void delete(Integer id);
 
 }
