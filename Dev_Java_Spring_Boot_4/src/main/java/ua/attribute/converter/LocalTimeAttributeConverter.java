@@ -19,3 +19,14 @@ public class LocalTimeAttributeConverter implements AttributeConverter<LocalTime
 		return arg0==null?null:arg0.toLocalTime();
 	}
 }
+
+
+
+/*
+ * <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+ * */
+ 

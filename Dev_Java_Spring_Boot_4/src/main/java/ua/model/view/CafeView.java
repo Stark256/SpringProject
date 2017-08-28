@@ -32,7 +32,22 @@ public class CafeView {
 	
 	private String close;
 	
-	public CafeView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address,String fullDescription, Type type, String phone, String email, LocalTime open, LocalTime close) {
+//	public CafeView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address,String fullDescription, Type type, String phone, String email, LocalTime open, LocalTime close) {
+//		this.id = id;
+//		this.rate = rate;
+//		this.name = name;
+//		this.photoUrl = photoUrl;
+//		this.version = version;
+//		this.address = address;
+//		this.fullDescription = fullDescription;
+//		this.type = type.name();
+//		this.phone = phone;
+//		this.email = email;
+//		this.open = open.format(DateTimeFormatter.ofPattern("HH:mm"));
+//		this.close = close.format(DateTimeFormatter.ofPattern("HH:mm"));
+//	}
+	
+	public CafeView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address,String fullDescription, Type type, String phone, String email, String open, String close) {
 		this.id = id;
 		this.rate = rate;
 		this.name = name;
@@ -43,8 +58,8 @@ public class CafeView {
 		this.type = type.name();
 		this.phone = phone;
 		this.email = email;
-		this.open = open.format(DateTimeFormatter.ofPattern("HH:mm"));
-		this.close = close.format(DateTimeFormatter.ofPattern("HH:mm"));
+		this.open = open;
+		this.close = close;
 	}
 
 	public Integer getId() {
