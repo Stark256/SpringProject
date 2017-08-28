@@ -7,14 +7,14 @@ import ua.model.view.CafeView;
 
 public interface CafeService {
 
-	List<String> findAllOpenClose();
-
-	List<CafeView> findAllViews();
-
-	void save(CafeRequest request);
-
-	CafeRequest findOne(Integer id);
-
-	void delete(Integer id);
 	
+	List<String> findAllOpenClose();
+	
+	List<CafeView> findAllViews();
+	
+	void save(CafeRequest request);
+	
+	CafeRequest findOne(Integer id);
+	
+	void delete(Integer id);
 }

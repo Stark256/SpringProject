@@ -17,7 +17,8 @@ import ua.service.CafeService;
 public class CafeServiceImpl implements CafeService {
 
 	private final CafeRepository repository;
-
+	
+	
 	@Autowired
 	public CafeServiceImpl(CafeRepository repository) {
 		this.repository = repository;
@@ -29,20 +30,8 @@ public class CafeServiceImpl implements CafeService {
 	}
 
 	@Override
-//	@Transactional(readOnly = true)
 	public List<CafeView> findAllViews() {
-		List<CafeView> views = repository.findAllViews();
-		// views.forEach(this::loadOpenClose);
-		return views;
-	}
-
-	// private void loadIngredients(MealView view) {
-	// view.setIngredients(repository.findAllIngredientsByMealId(view.getId()));
-	// }
-
-	@Override
-	public void delete(Integer id) {
-		repository.delete(id);
+		return repository.findAllViews();
 	}
 
 	@Override
@@ -61,13 +50,12 @@ public class CafeServiceImpl implements CafeService {
 		cafe.setOpen(request.getOpen());
 		cafe.setClose(request.getClose());
 		repository.save(cafe);
-		
 	}
 
 	@Override
 	public CafeRequest findOne(Integer id) {
 		Cafe cafe=repository.findOne(id);
-		CafeRequest request=new CafeRequest();
+		CafeRequest request = new CafeRequest();
 		request.setName(cafe.getName());
 		request.setId(cafe.getId());
 		request.setRate(String.valueOf(cafe.getRate()));
@@ -79,9 +67,16 @@ public class CafeServiceImpl implements CafeService {
 		request.setPhone(cafe.getPhone());
 		request.setEmail(cafe.getEmail());
 		request.setOpen(cafe.getOpen());
-		request.setClose(cafe.getClose());		
+		request.setClose(cafe.getClose());
 		return request;
 	}
+
+	@Override
+	public void delete(Integer id) {
+		repository.delete(id);
+	}
+
+
 
 	
 }

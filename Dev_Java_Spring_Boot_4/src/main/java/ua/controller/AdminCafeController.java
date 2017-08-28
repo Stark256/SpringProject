@@ -20,48 +20,47 @@ import ua.service.CafeService;
 public class AdminCafeController {
 
 	private final CafeService service;
-	
+
 	@Autowired
 	public AdminCafeController(CafeService service) {
+		super();
 		this.service = service;
 	}
 	
 	@ModelAttribute("cafe")
-	public CafeRequest getForm() {
+	public CafeRequest getForm(){
 		return new CafeRequest();
 	}
 	
 	@GetMapping
-	public String show(Model model) {
-		model.addAttribute("opens", service.findAllOpenClose());
+	public String show(Model model){
+		model.addAttribute("opens",service.findAllOpenClose());
 		model.addAttribute("closes",service.findAllOpenClose());
-		model.addAttribute("cafes", service.findAllViews());
+		model.addAttribute("cafes",service.findAllViews());
 		return "cafe";
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id) {
+	public String delete(@PathVariable Integer id){
 		service.delete(id);
 		return "redirect:/admin/cafe";
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("cafe") CafeRequest request, SessionStatus status) {
+	public String save(@ModelAttribute("cafe") CafeRequest request, SessionStatus status){
 		service.save(request);
 		return cancel(status);
 	}
 	
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable Integer id, Model model) {
-		model.addAttribute("cafe", service.findOne(id));
+	public String update(@PathVariable Integer id, Model model){
+		model.addAttribute("cafe",service.findOne(id));
 		return show(model);
 	}
 	
 	@GetMapping("/cancel")
-	public String cancel(SessionStatus status) {
+	public String cancel(SessionStatus status){
 		status.setComplete();
 		return "redirect:/admin/cafe";
-	}
-	
-	
+	}	
 }

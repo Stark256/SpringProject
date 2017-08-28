@@ -13,6 +13,6 @@ public interface OpenCloseRepository extends JpaRepository<OpenClose, Integer>{
 //	@Query("FROM Cafe WHERE name=?1")
 //	Cafe findByName(String name);
 	
-	@Query("FROM OpenClose WHERE time=?1")
+	@Query("SELECT op.time FROM OpenClose op WHERE op.time=?1")
 	OpenClose findByTime(LocalTime time);
 }
