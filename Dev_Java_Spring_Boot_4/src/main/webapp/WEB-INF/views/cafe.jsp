@@ -27,9 +27,9 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-2 col-form-label" for="type">Type:</label>
+						<label class="col-2 col-form-label" for="open">Type:</label>
 						<div class="col-10">
-							<form:input class="form-control" id="type" path="type"/>
+							<form:select path="type" items="${types}" class="form-control"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -93,7 +93,7 @@
 							<td>${cafe.type}</td>
 							<td>${cafe.email}</td>
 							<td>${cafe.phone}</td>
-							<td>${cafe.description}</td>
+							<td>${cafe.fullDescription}</td>
 							<td>${cafe.open}</td>
 							<td>${cafe.close}</td>
 							<td class="text-center">

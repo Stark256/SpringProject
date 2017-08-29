@@ -36,6 +36,7 @@ public class AdminCafeController {
 		model.addAttribute("opens", service.findAllOpenClose());
 		model.addAttribute("closes",service.findAllOpenClose());
 		model.addAttribute("cafes", service.findAllViews());
+		model.addAttribute("types",service.findAllTypes());
 		return "cafe";
 	}
 	

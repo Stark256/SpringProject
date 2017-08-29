@@ -2,6 +2,7 @@ package ua.service;
 
 import java.util.List;
 
+import ua.entity.Type;
 import ua.model.request.CafeRequest;
 import ua.model.view.CafeView;
 
@@ -16,5 +17,7 @@ public interface CafeService {
 	CafeRequest findOne(Integer id);
 
 	void delete(Integer id);
+	
+	List<Type> findAllTypes();
 	
 }

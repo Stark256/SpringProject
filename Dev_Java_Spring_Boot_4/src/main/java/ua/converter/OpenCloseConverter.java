@@ -18,10 +18,10 @@ public class OpenCloseConverter implements Converter<String, OpenClose> {
 
 	@Override
 	public OpenClose convert(String arg0) {
-		System.out.println("--------------------------");
-		System.out.println("arg0");
-		System.out.println("--------------------------");
-		return reposiroty.findByTime(LocalTime.of(23, 00));
+		String[] a=arg0.split(":");
+		
+		LocalTime time = LocalTime.of(Integer.valueOf(a[0]), Integer.valueOf(a[1]));
+		
+		return reposiroty.findByTime(time);
 	}
-
 }

@@ -1,6 +1,7 @@
 package ua.service.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,15 @@ public class CafeServiceImpl implements CafeService {
 		request.setOpen(cafe.getOpen());
 		request.setClose(cafe.getClose());		
 		return request;
+	}
+
+	@Override
+	public List<Type> findAllTypes() {
+		List<Type> types=new ArrayList<>();
+		for(int i=0;i<Type.values().length;i++){
+			types.add(Type.values()[i]);
+		}
+		return types;
 	}
 
 	

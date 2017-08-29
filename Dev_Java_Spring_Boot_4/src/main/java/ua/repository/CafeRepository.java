@@ -13,14 +13,16 @@ public interface CafeRepository extends JpaRepository<Cafe, Integer>{
 //	@Query("FROM Cafe WHERE name=?1")
 //	Cafe findByName(String name);
 	
-	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address,c.fullDescription, c.type, c.phone, c.email, open.open, close.close) FROM Cafe c JOIN c.open open JOIN c.close close")
+	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address,c.fullDescription, c.type, c.phone, c.email, open.time, close.time) FROM Cafe c JOIN c.open open JOIN c.close close")
 	List<CafeView> findAllViews();
 	
-	@Query("SELECT t.time FROM OpenCloce t")
+	@Query("SELECT t.time FROM OpenClose t")
 	List<String> findAllOpenClose();
 	
-	@Query("SELECT o.time FROM OpenCloce o JOIN i.meals m WHERE m.id=?1")
-	List<String> findAllTimesByOpenCloceId(Integer id);
+
+	
+	//@Query("SELECT o.time FROM OpenCloce o JOIN o.cafes WHERE o.id=?1")
+	//List<String> findAllTimesByOpenCloceId(Integer id);
 	
 //	@Query("SELECT i.name FROM Ingredient i JOIN i.meals m WHERE m.id=?1")
 //	List<String> findAllIngredientsByMealId(Integer id);
