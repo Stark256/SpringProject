@@ -62,6 +62,6 @@ public class AdminCafeController {
 		status.setComplete();
 		return "redirect:/admin/cafe";
 	}
-	
+	//'/'
 	
 }
