@@ -26,15 +26,15 @@ public class AdminCuisineController {
 		this.service = service;
 	}
 	
+	@ModelAttribute("cuisine")
+	public Cuisine getForm() {
+		return new Cuisine();
+	}
+	
 	@GetMapping
 	public String show(Model model) {
 		model.addAttribute("cuisines", service.findAll());
 		return "cuisine";
-	}
-	
-	@ModelAttribute("cuisine")
-	public Cuisine getForm(){
-		return new Cuisine();
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -44,19 +44,20 @@ public class AdminCuisineController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("cuisine") Cuisine cuisine,SessionStatus status) {
+	public String save(@ModelAttribute("cuisine") Cuisine cuisine, SessionStatus status) {
 		service.save(cuisine);
 		return cancel(status);
 	}
-	@GetMapping("cancel")
-	public String cancel(SessionStatus status){
-		status.setComplete();
-		return "redirect:/admin/cuisine";
-	}
 	
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable Integer id,Model model){
-		model.addAttribute("cuisune",service.findOne(id));
+	public String update(@PathVariable Integer id, Model model) {
+		model.addAttribute("cuisine", service.findOne(id));
 		return show(model);
+	}
+	
+	@GetMapping("/cancel")
+	public String cancel(SessionStatus status) {
+		status.setComplete();
+		return "redirect:/admin/cuisine";
 	}
 }

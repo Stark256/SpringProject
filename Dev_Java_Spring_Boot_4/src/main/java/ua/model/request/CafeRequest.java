@@ -1,12 +1,14 @@
 package ua.model.request;
 
+import java.math.BigDecimal;
+
 import ua.entity.OpenClose;
 
 public class CafeRequest {
 
 	private Integer id;
 
-	private String rate;
+	private BigDecimal rate;
 
 	private String name;
 
@@ -36,11 +38,11 @@ public class CafeRequest {
 		this.id = id;
 	}
 
-	public String getRate() {
+	public BigDecimal getRate() {
 		return rate;
 	}
 
-	public void setRate(String rate) {
+	public void setRate(BigDecimal rate) {
 		this.rate = rate;
 	}
 
