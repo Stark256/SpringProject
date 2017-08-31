@@ -10,6 +10,7 @@ import ua.model.view.CafeView;
 public interface CafeService {
 	
 	//extends CrudService<Cafe, Integer>
+	List<Type> findAllTypes();
 
 	List<LocalTime> findAllOpenCloses();
 
@@ -21,6 +22,5 @@ public interface CafeService {
 
 	void delete(Integer id);
 	
-	List<Type> findAllTypes();
-	
+
 }

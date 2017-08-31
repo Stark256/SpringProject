@@ -19,6 +19,8 @@ public class CafeServiceImpl   implements CafeService {
 	private final CafeRepository repository;
 
 	
+	
+	
 	public CafeServiceImpl(CafeRepository repository) {
 		this.repository = repository;
 	}
@@ -70,7 +72,7 @@ public class CafeServiceImpl   implements CafeService {
 	@Override
 	public CafeRequest findOne(Integer id) {
 		Cafe cafe=repository.findOne(id);
-		CafeRequest request=new CafeRequest();
+		CafeRequest request = new CafeRequest();
 		request.setName(cafe.getName());
 		request.setId(cafe.getId());
 		request.setRate(cafe.getRate());
@@ -82,7 +84,7 @@ public class CafeServiceImpl   implements CafeService {
 		request.setPhone(cafe.getPhone());
 		request.setEmail(cafe.getEmail());
 		request.setOpen(cafe.getOpen());
-		request.setClose(cafe.getClose());		
+		request.setClose(cafe.getClose());
 		return request;
 	}
 
@@ -92,8 +94,8 @@ public class CafeServiceImpl   implements CafeService {
 		repository.delete(id);
 	}
 
+	}
+
+
 
 	
-
-	
-}
