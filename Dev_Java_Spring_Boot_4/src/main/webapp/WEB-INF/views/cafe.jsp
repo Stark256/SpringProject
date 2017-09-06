@@ -43,12 +43,7 @@
 						</div>
 					</div>
 					
-						<div class="form-group row">
-						<label class="col-2 col-form-label" for="email">Email:</label>
-						<div class="col-10">
-							<form:input class="form-control" id="email" path="email"/>
-						</div>
-					</div>
+						
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="phone">Phone:</label>
 						<div class="col-10">
@@ -85,7 +80,6 @@
 						<th class="text-center">Full description</th>
 						<th class="text-center">Type</th>
 						<th class="text-center">Phone</th>
-						<th class="text-center">Email</th>
 						<th class="text-center">Open</th>
 						<th class="text-center">Close</th>
 						<th class="text-center">Options</th>
@@ -96,7 +90,6 @@
 							<td>${cafe.address}</td>
 							<td>${cafe.fullDescription}</td>
 							<td>${cafe.type}</td>
-							<td>${cafe.email}</td>
 							<td>${cafe.phone}</td>
 							<td>${cafe.open}</td>
 							<td>${cafe.close}</td>

@@ -36,8 +36,6 @@ public class Cafe extends AbstractEntityName{
 	@Column(length=13)
 	private String phone;
 	
-	private String email;
-	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private OpenClose open;
 	
@@ -53,7 +51,8 @@ public class Cafe extends AbstractEntityName{
 	@OneToMany(mappedBy="cafe")
 	private List<CafeComment> comment;
 	
-	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private User user;
 	
 	public List<CafeComment> getComment() {
 		return comment;
@@ -114,12 +113,6 @@ public class Cafe extends AbstractEntityName{
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public OpenClose getOpen() {
 		return open;

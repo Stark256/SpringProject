@@ -19,6 +19,7 @@
 			<br> <a href="/admin/user">Users</a>
 		<br> <a href="/admin/meal">Meal</a>
 		<br> <a href="/admin/cafe">Cafe</a>
+		<br> <a href="/admin/table">Table</a>
 	</div>
 </body>
 </html>

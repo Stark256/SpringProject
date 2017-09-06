@@ -1,7 +1,8 @@
 package ua.service;
 
-import ua.entity.User;
+import ua.model.request.RegistrationRequest;
 
-public interface UserService extends CrudService<User,Integer>{
+public interface UserService {
 
+	void save(RegistrationRequest request);
 }

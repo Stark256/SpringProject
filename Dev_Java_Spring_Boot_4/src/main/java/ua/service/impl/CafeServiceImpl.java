@@ -51,7 +51,6 @@ public class CafeServiceImpl   implements CafeService {
 		cafe.setType(Type.valueOf(request.getType()));
 		if(request.getPhone().length()<14)
 		cafe.setPhone(request.getPhone());
-		cafe.setEmail(request.getEmail());
 		cafe.setOpen(request.getOpen());
 		cafe.setClose(request.getClose());
 		repository.save(cafe);
@@ -82,7 +81,6 @@ public class CafeServiceImpl   implements CafeService {
 		request.setFullDescription(cafe.getFullDescription());
 		request.setType(String.valueOf(cafe.getType()));
 		request.setPhone(cafe.getPhone());
-		request.setEmail(cafe.getEmail());
 		request.setOpen(cafe.getOpen());
 		request.setClose(cafe.getClose());
 		return request;

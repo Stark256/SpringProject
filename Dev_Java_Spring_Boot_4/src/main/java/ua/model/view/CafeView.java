@@ -26,13 +26,11 @@ public class CafeView {
 	
 	private String phone;
 	
-	private String email;
-	
 	private String open;
 	
 	private String close;
 	
-	public CafeView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address,String fullDescription, Type type, String phone, String email, LocalTime open, LocalTime close) {
+	public CafeView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address,String fullDescription, Type type, String phone,  LocalTime open, LocalTime close) {
 		this.id = id;
 		this.rate = rate;
 		this.name = name;
@@ -42,7 +40,6 @@ public class CafeView {
 		this.fullDescription = fullDescription;
 		this.type = type.name();
 		this.phone = phone;
-		this.email = email;
 		this.open = open.format(DateTimeFormatter.ofPattern("HH:mm"));
 		this.close = close.format(DateTimeFormatter.ofPattern("HH:mm"));
 	}
@@ -134,13 +131,7 @@ public class CafeView {
 		this.phone = phone;
 	}
 
-	public String getEmail() {
-		return email;
-	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	public String getOpen() {
 		return open;
@@ -162,6 +153,6 @@ public class CafeView {
 	public String toString() {
 		return "CafeView [id=" + id + ", rate=" + rate + ", name=" + name + ", photoUrl=" + photoUrl + ", version="
 				+ version + ", address=" + address + ", fullDescription=" + fullDescription + ", type=" + type
-				+ ", phone=" + phone + ", email=" + email + ", open=" + open + ", close=" + close + "]";
+				+ ", phone=" + phone  + ", open=" + open + ", close=" + close + "]";
 	}
 }
