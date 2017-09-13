@@ -2,6 +2,7 @@ package ua.service.impl;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import ua.entity.Cafe;
 import ua.entity.Type;
 import ua.model.request.CafeRequest;
+import ua.model.view.CafeIndexView;
 import ua.model.view.CafeView;
 import ua.repository.CafeRepository;
 import ua.service.CafeService;
@@ -91,6 +93,9 @@ public class CafeServiceImpl   implements CafeService {
 	public void delete(Integer id) {
 		repository.delete(id);
 	}
+
+
+	
 
 	}
 
