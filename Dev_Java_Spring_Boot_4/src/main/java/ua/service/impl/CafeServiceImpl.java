@@ -95,6 +95,25 @@ public class CafeServiceImpl   implements CafeService {
 	}
 
 
+	@Override
+	public CafeRequest findOneDesc(Integer id) {
+		Cafe cafe=repository.findOneDesc(id);
+		CafeRequest request = new CafeRequest();
+		request.setName(cafe.getName());
+		request.setId(cafe.getId());
+		request.setRate(cafe.getRate());
+		request.setPhotoUrl(cafe.getPhotoUrl());
+		request.setAddress(cafe.getAddress());
+		request.setVersion(cafe.getVersion());
+		request.setFullDescription(cafe.getFullDescription());
+		request.setType(String.valueOf(cafe.getType()));
+		request.setPhone(cafe.getPhone());
+		request.setOpen(cafe.getOpen());
+		request.setClose(cafe.getClose());
+		return request;
+	}
+
+
 	
 
 	}

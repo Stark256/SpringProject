@@ -23,6 +23,6 @@ public interface CafeService {
 
 	void delete(Integer id);
 	
-	
+	CafeRequest findOneDesc(Integer id);
 
 }
