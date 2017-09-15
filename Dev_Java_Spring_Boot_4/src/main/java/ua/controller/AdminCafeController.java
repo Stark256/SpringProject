@@ -57,11 +57,7 @@ public class AdminCafeController {
 		return show(model);
 	}
 	
-	@GetMapping("/cafedesc/{id}")
-	public String desc(@PathVariable Integer id, Model model){
-		model.addAttribute("cafe", service.findOneDesc(id));
-		return "cafedesc";
-	}
+	
 	
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
