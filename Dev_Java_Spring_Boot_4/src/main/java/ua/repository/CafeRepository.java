@@ -6,14 +6,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 
 import ua.entity.Cafe;
-import ua.model.request.CafeRequest;
-import ua.model.view.CafeIndexView;
+import ua.entity.User;
 import ua.model.view.CafeView;
 
 public interface CafeRepository extends JpaNameRepository<Cafe>{
 
 	
-	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address,c.fullDescription, c.type, c.phone, op.time, cl.time) FROM Cafe c JOIN c.open op JOIN c.close cl")
+	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address,c.fullDescription,c.shortDescription, c.type, c.phone, op.time, cl.time) FROM Cafe c JOIN c.open op JOIN c.close cl")
 	List<CafeView> findAllViews();
 	
 	@Query("SELECT t.time FROM OpenClose t")
@@ -24,4 +23,10 @@ public interface CafeRepository extends JpaNameRepository<Cafe>{
 	
 	@Query("SELECT  c FROM Cafe c JOIN FETCH c.open JOIN FETCH c.close WHERE c.id=?1")
 	Cafe findOneDesc(Integer id);
+	
+	@Query("SELECT u FROM User u WHERE u.email=?1")
+	User findOneUserByEmail(String email);
+	
+	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address,c.fullDescription,c.shortDescription, c.type, c.phone, op.time, cl.time) FROM Cafe c JOIN c.open op JOIN c.close cl WHERE c.user.email=?1")
+	List<CafeView> findAllCafeByUserEmail(String email);
 }

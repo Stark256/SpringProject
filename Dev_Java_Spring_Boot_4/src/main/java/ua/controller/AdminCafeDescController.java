@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import ua.service.CafeService;
 
 @Controller
-@RequestMapping("/admin/cafe")
+@RequestMapping("/")
 @SessionAttributes("cafedesc")
 public class AdminCafeDescController {
 
@@ -24,7 +24,7 @@ private final CafeService service;
 	
 	@GetMapping("/cafedesc/{id}")
 	public String desc(@PathVariable Integer id, Model model){
-		model.addAttribute("cafe", service.findOneDesc(id));
+		model.addAttribute("cafe", service.findOne(id));
 		return "cafedesc";
 	}
 	

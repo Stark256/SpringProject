@@ -10,32 +10,39 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
 	crossorigin="anonymous">
-<title>Cafe</title>
+<title>Meal</title>
 </head>
 <body>
 	<div class="container">		
-		<div class="row">
+		<div class="row">		
 			<div class="col-12">
 				<table class="table table-bordered">
-					<c:forEach var="cafe" items="${cafes}">
 						<tr>
-							<td>${cafe.name}</td>
-							<td>${cafe.address}</td>
-							<td>${cafe.shortDescription}</td>
-							<td>${cafe.type}</td>
-							<td><a href="/admin/cafe/cafedesc/${cafe.id}" class="btn btn-outline-warning btn-sm">Show Description</a>
-							<a href="/admin/cafe/cafemeal/${cafe.id}" class="btn btn-outline-warning btn-sm">Show Meals</a>
+							<th>Meal title</th>
+							<th>Meal cuisine</th>
+							<th>Meal weight</th>
+							<th>Meal price</th>
+							<th>Meal description</th>
+							<th>Meal ingredients</th>
+						<tr>
+					<c:forEach var="meal" items="${meals}">
+						<tr>
+							<td>${meal.title}</td>
+							<td>${meal.cuisine.name}</td>
+							<td>${meal.weight}</td>
+							<td>${meal.price}</td>
+							<td>${meal.description}</td>
+							<td>
+								<c:forEach var="ingredient" items="${meal.ingredients}">
+									${ingredient.name} 
+								</c:forEach>
 							</td>
-						<!-- 	<td class="text-center"><a
-								href="/admin/cafe/update/${cafe.id}"
-								class="btn btn-outline-warning btn-sm">Update</a> <a
-								href="/admin/cafe/delete/${cafe.id}"
-								class="btn btn-outline-danger btn-sm">Delete</a></td>
-						</tr> -->
+						<tr>
 					</c:forEach>
 				</table>
 			</div>
 		</div>
+		<a href="/admin">Admin</a>
 	</div>
 </body>
 </html>

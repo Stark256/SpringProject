@@ -1,16 +1,17 @@
 package ua.service.impl;
 
+import java.math.BigDecimal;
+import java.security.Principal;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import ua.entity.Cafe;
 import ua.entity.Type;
+import ua.entity.User;
 import ua.model.request.CafeRequest;
-import ua.model.view.CafeIndexView;
 import ua.model.view.CafeView;
 import ua.repository.CafeRepository;
 import ua.service.CafeService;
@@ -41,11 +42,12 @@ public class CafeServiceImpl   implements CafeService {
 
 
 	@Override
-	public void save(CafeRequest request) {
+	public void save(CafeRequest request,Principal principal) {
 		Cafe cafe=new Cafe();
 		cafe.setName(request.getName());
 		cafe.setId(request.getId());
-		cafe.setRate(request.getRate());
+		cafe.setRate(new BigDecimal(0));
+		cafe.setShortDescription(request.getShortDescription());
 		cafe.setPhotoUrl(request.getPhotoUrl());
 		cafe.setAddress(request.getAddress());
 		cafe.setVersion(request.getVersion());
@@ -55,6 +57,7 @@ public class CafeServiceImpl   implements CafeService {
 		cafe.setPhone(request.getPhone());
 		cafe.setOpen(request.getOpen());
 		cafe.setClose(request.getClose());
+		cafe.setUser(repository.findOneUserByEmail(principal.getName()));
 		repository.save(cafe);
 	}
 
@@ -81,6 +84,7 @@ public class CafeServiceImpl   implements CafeService {
 		request.setAddress(cafe.getAddress());
 		request.setVersion(cafe.getVersion());
 		request.setFullDescription(cafe.getFullDescription());
+		request.setShortDescription(cafe.getShortDescription());
 		request.setType(String.valueOf(cafe.getType()));
 		request.setPhone(cafe.getPhone());
 		request.setOpen(cafe.getOpen());
@@ -106,11 +110,24 @@ public class CafeServiceImpl   implements CafeService {
 		request.setAddress(cafe.getAddress());
 		request.setVersion(cafe.getVersion());
 		request.setFullDescription(cafe.getFullDescription());
+		request.setShortDescription(cafe.getShortDescription());
 		request.setType(String.valueOf(cafe.getType()));
 		request.setPhone(cafe.getPhone());
 		request.setOpen(cafe.getOpen());
 		request.setClose(cafe.getClose());
 		return request;
+	}
+
+
+	@Override
+	public List<CafeView> findAllCafeByUserEmail(String email) {
+		return repository.findAllCafeByUserEmail(email);
+	}
+
+
+	@Override
+	public User findOneUserByEmail(String email) {
+		return repository.findOneUserByEmail(email);
 	}
 
 

@@ -22,6 +22,8 @@ public class CafeView {
 	
 	private String fullDescription;
 	
+	private String shortDescription;
+	
 	private String type;
 	
 	private String phone;
@@ -30,7 +32,7 @@ public class CafeView {
 	
 	private String close;
 	
-	public CafeView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address,String fullDescription, Type type, String phone,  LocalTime open, LocalTime close) {
+	public CafeView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address,String fullDescription,String shortDescription, Type type, String phone,  LocalTime open, LocalTime close) {
 		this.id = id;
 		this.rate = rate;
 		this.name = name;
@@ -38,6 +40,7 @@ public class CafeView {
 		this.version = version;
 		this.address = address;
 		this.fullDescription = fullDescription;
+		this.shortDescription=shortDescription;
 		this.type = type.name();
 		this.phone = phone;
 		this.open = open.format(DateTimeFormatter.ofPattern("HH:mm"));
@@ -147,6 +150,15 @@ public class CafeView {
 
 	public void setClose(String close) {
 		this.close = close;
+	}
+	
+
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
 	}
 
 	@Override

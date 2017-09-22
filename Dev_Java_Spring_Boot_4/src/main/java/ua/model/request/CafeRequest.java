@@ -19,6 +19,8 @@ public class CafeRequest {
 	private String address;
 
 	private String fullDescription;
+	
+	private String shortDescription;
 
 	private String type;
 
@@ -125,6 +127,16 @@ public class CafeRequest {
 	public void setClose(OpenClose close) {
 		this.close = close;
 	}
+
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+	
+	
 
 	
 

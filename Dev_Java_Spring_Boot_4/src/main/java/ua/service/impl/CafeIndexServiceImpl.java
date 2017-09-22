@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import ua.entity.Meal;
 import ua.model.view.CafeIndexView;
 import ua.repository.CafeIndexRepository;
 import ua.service.CafeIndexService;
@@ -41,6 +42,11 @@ public class CafeIndexServiceImpl implements CafeIndexService {
 		    i++;
 		    }
 		return cafeTopFive;
+	}
+
+	@Override
+	public List<Meal> findMealByCafeId(Integer id) {
+		return repository.findMealByCafeId(id);
 	}
 	
 }

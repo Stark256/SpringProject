@@ -17,46 +17,46 @@ import ua.model.request.CafeRequest;
 import ua.service.CafeService;
 
 @Controller
-@RequestMapping("/admin/cafe")
-@SessionAttributes("cafe")
-public class AdminCafeController {
+@RequestMapping("/addcafe")
+@SessionAttributes("addcafe")
+public class AddCafeController {
 
 	private final CafeService service;
 	
 	@Autowired
-	public AdminCafeController(CafeService service) {
+	public AddCafeController(CafeService service) {
 		this.service = service;
 	}
 	
-	@ModelAttribute("cafe")
+	@ModelAttribute("addcafe")
 	public CafeRequest getForm() {
 		return new CafeRequest();
 	}
 	
 	@GetMapping
-	public String show(Model model) {
+	public String show(Model model,Principal principal) {
 		model.addAttribute("times", service.findAllOpenCloses());
-		model.addAttribute("cafes", service.findAllViews());
 		model.addAttribute("types",service.findAllTypes());
-		return "cafe";
+		model.addAttribute("cafes",service.findAllCafeByUserEmail(principal.getName()));
+		return "addcafe";
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
 		service.delete(id);
-		return "redirect:/admin/cafe";
+		return "redirect:/addcafe";
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("cafe") CafeRequest request, SessionStatus status,Principal principal) {
+	public String save(@ModelAttribute("addcafe") CafeRequest request, SessionStatus status,Principal principal) {
 		service.save(request,principal);
 		return cancel(status);
 	}
 	
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable Integer id, Model model) {
-		model.addAttribute("cafe", service.findOne(id));
-		return show(model);
+	public String update(@PathVariable Integer id, Model model,Principal principal) {
+		model.addAttribute("addcafe", service.findOne(id));
+		return show(model,principal);
 	}
 	
 	
@@ -64,7 +64,6 @@ public class AdminCafeController {
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();
-		return "redirect:/admin/cafe";
+		return "redirect:/addcafe";
 	}
-	
 }
