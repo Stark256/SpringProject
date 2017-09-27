@@ -26,12 +26,6 @@
 							<td><a href="/admin/cafe/cafedesc/${cafe.id}" class="btn btn-outline-warning btn-sm">Show Description</a>
 							<a href="/admin/cafe/cafemeal/${cafe.id}" class="btn btn-outline-warning btn-sm">Show Meals</a>
 							</td>
-						<!-- 	<td class="text-center"><a
-								href="/admin/cafe/update/${cafe.id}"
-								class="btn btn-outline-warning btn-sm">Update</a> <a
-								href="/admin/cafe/delete/${cafe.id}"
-								class="btn btn-outline-danger btn-sm">Delete</a></td>
-						</tr> -->
 					</c:forEach>
 				</table>
 			</div>

@@ -1,13 +1,11 @@
 package ua.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,18 +15,9 @@ public class CafeComment extends AbstractEntity{
 	@Lob
 	private String comment;
 	
-	@ManyToOne
-	private CafeComment parentComment;
+	private String user;
 	
-	@OneToMany(mappedBy="parentComment")
-	private List<CafeComment> childComment = new ArrayList<CafeComment>();
-	
-	private int likee;
-	
-	private int dislike;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private User user;
+	private LocalDateTime time;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Cafe cafe;
@@ -41,43 +30,12 @@ public class CafeComment extends AbstractEntity{
 		this.comment = comment;
 	}
 
-	public CafeComment getParentComment() {
-		return parentComment;
-	}
 
-	public void setParentComment(CafeComment parentComment) {
-		this.parentComment = parentComment;
-	}
-
-	public List<CafeComment> getChildComment() {
-		return childComment;
-	}
-
-	public void setChildComment(List<CafeComment> childComment) {
-		this.childComment = childComment;
-	}
-
-	public int getLike() {
-		return likee;
-	}
-
-	public void setLike(int like) {
-		this.likee = like;
-	}
-
-	public int getDislike() {
-		return dislike;
-	}
-
-	public void setDislike(int dislike) {
-		this.dislike = dislike;
-	}
-
-	public User getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
@@ -87,6 +45,14 @@ public class CafeComment extends AbstractEntity{
 
 	public void setCafe(Cafe cafe) {
 		this.cafe = cafe;
+	}
+
+	public LocalDateTime getTime() {
+		return time;
+	}
+
+	public void setTime(LocalDateTime time) {
+		this.time = time;
 	}
 	
 	

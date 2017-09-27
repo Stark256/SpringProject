@@ -78,41 +78,6 @@
 				</form:form>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-12">
-				<table class="table table-bordered">
-					<tr>
-						<th class="text-center">Name</th>
-						<th class="text-center">Address</th>
-						<th class="text-center">Full description</th>
-						<th class="text-center">Short description</th>
-						<th class="text-center">Type</th>
-						<th class="text-center">Phone</th>
-						<th class="text-center">Open</th>
-						<th class="text-center">Close</th>
-						<th class="text-center">Options</th>
-					</tr>
-					<c:forEach var="cafe" items="${cafes}">
-						<tr>
-							<td>${cafe.name}</td>
-							<td>${cafe.address}</td>
-							<td>${cafe.fullDescription}</td>
-							<td>${cafe.shortDescription}</td>
-							<td>${cafe.type}</td>
-							<td>${cafe.phone}</td>
-							<td>${cafe.open}</td>
-							<td>${cafe.close}</td>
-							
-							<td class="text-center"><a
-								href="/addcafe/update/${cafe.id}"
-								class="btn btn-outline-warning btn-sm">Update</a> <a
-								href="/addcafe/delete/${cafe.id}"
-								class="btn btn-outline-danger btn-sm">Delete</a></td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
-		</div>
 	</div>
 </body>
 </html>

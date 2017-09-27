@@ -15,7 +15,8 @@
 <body>
 	<div class="container">
 		<h2>Profile</h2>
-		<a href="/addcafe">Cafe</a>
+		<a href="/cafe">Cafe</a>
+		<a href="/meal">Meal</a>
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -28,6 +29,34 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-bordered">
+					<tr>
+						<th class="text-center">Name</th>
+						<th class="text-center">Address</th>
+						<th class="text-center">Full description</th>
+						<th class="text-center">Short description</th>
+						<th class="text-center">Type</th>
+						<th class="text-center">Phone</th>
+						<th class="text-center">Open</th>
+						<th class="text-center">Close</th>
+					</tr>
+					<c:forEach var="cafe" items="${cafes}">
+						<tr>
+							<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
+							<td>${cafe.address}</td>
+							<td>${cafe.fullDescription}</td>
+							<td>${cafe.shortDescription}</td>
+							<td>${cafe.type}</td>
+							<td>${cafe.phone}</td>
+							<td>${cafe.open}</td>
+							<td>${cafe.close}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+		</div>
+	</div>	
 </body>
 </html>

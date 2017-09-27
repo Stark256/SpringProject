@@ -1,6 +1,7 @@
 package ua.service.impl;
 
 import java.math.BigDecimal;
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -33,8 +34,8 @@ public class MealServiceImpl implements MealService{
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<MealView> findAllViews() {
-		List<MealView> views = repository.findAllViews();
+	public List<MealView> findAllMealByCafeId(Principal principal) {
+		List<MealView> views = repository.findAllMealsByUserEmail(principal.getName());
 		views.forEach(this::loadIngredients);
 		return views;
 	}
@@ -47,10 +48,12 @@ public class MealServiceImpl implements MealService{
 	public void delete(Integer id) {
 		repository.delete(id);
 	}
-
+	
+	
 	@Override
 	public void save(MealRequest request) {
 		Meal meal = new Meal();
+		meal.setCafe(request.getCafe());
 		meal.setCuisine(request.getCuisine());
 		meal.setDescription(request.getDescription());
 		meal.setId(request.getId());
@@ -67,6 +70,7 @@ public class MealServiceImpl implements MealService{
 	public MealRequest findOne(Integer id) {
 		Meal meal = repository.findOneRequest(id);
 		MealRequest request = new MealRequest();
+		request.setCafe(meal.getCafe());
 		request.setCuisine(meal.getCuisine());
 		request.setDescription(meal.getDescription());
 		request.setId(meal.getId());
@@ -78,4 +82,13 @@ public class MealServiceImpl implements MealService{
 		request.setWeight(String.valueOf(meal.getWeight()));
 		return request;
 	}
+
+	@Override
+	public List<String> findAllCafeByUserEmail(String email) {
+		return repository.findAllCafeByUserEmail(email);
+	}
+	
+	
+
+
 }

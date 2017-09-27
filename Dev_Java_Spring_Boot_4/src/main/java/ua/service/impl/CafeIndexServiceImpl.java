@@ -23,7 +23,7 @@ public class CafeIndexServiceImpl implements CafeIndexService {
 
 	@Override
 	public List<CafeIndexView> findTopFiveCafe() {
-		 List<CafeIndexView> cafeIndexViews= repository.findAllCafes();
+		/* List<CafeIndexView> cafeIndexViews= repository.findAllCafes();
 		    List<CafeIndexView> cafeTopFive = new ArrayList<>();
 		    int i=0;
 		    while(i<5){
@@ -40,7 +40,17 @@ public class CafeIndexServiceImpl implements CafeIndexService {
 		    cafeTopFive.add(cafeIndexView);
 		    cafeIndexViews.remove(cafeIndexView);
 		    i++;
+		    }*/
+		 List<CafeIndexView> cafeIndexViews= repository.findAllCafes();
+		    List<CafeIndexView> cafeTopFive = new ArrayList<>();
+		    Iterator<CafeIndexView> iter = cafeIndexViews.iterator();
+		    int i=0;
+		    while(iter.hasNext()&&i<5){
+			      CafeIndexView cafe = iter.next();
+			      cafeTopFive.add(cafe);  
+			      i++;
 		    }
+		
 		return cafeTopFive;
 	}
 

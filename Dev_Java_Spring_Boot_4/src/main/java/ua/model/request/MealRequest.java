@@ -3,6 +3,7 @@ package ua.model.request;
 import java.util.ArrayList;
 import java.util.List;
 
+import ua.entity.Cafe;
 import ua.entity.Cuisine;
 import ua.entity.Ingredient;
 
@@ -25,6 +26,18 @@ public class MealRequest {
 	private String weight;
 	
 	private List<Ingredient> ingredients=new ArrayList<>();
+	
+	private Cafe cafe;
+
+	
+	
+	public Cafe getCafe() {
+		return cafe;
+	}
+
+	public void setCafe(Cafe cafe) {
+		this.cafe = cafe;
+	}
 
 	public Integer getId() {
 		return id;

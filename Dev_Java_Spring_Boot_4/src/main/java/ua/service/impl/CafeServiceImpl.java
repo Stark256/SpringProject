@@ -21,7 +21,7 @@ public class CafeServiceImpl   implements CafeService {
 
 	private final CafeRepository repository;
 
-	
+
 	
 	
 	public CafeServiceImpl(CafeRepository repository) {
@@ -132,8 +132,7 @@ public class CafeServiceImpl   implements CafeService {
 
 
 	
-
-	}
+}
 
 
 

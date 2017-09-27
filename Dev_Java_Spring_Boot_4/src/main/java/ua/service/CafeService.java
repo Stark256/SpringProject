@@ -29,5 +29,5 @@ public interface CafeService {
 	List<CafeView> findAllCafeByUserEmail(String email);
 	
 	User findOneUserByEmail(String email);
-
+	
 }

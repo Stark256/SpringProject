@@ -1,5 +1,6 @@
 package ua.service;
 
+import java.security.Principal;
 import java.util.List;
 
 import ua.model.request.MealRequest;
@@ -11,12 +12,16 @@ public interface MealService {
 
 	List<String> findAllIngredients();
 
-	List<MealView> findAllViews();
+	List<MealView> findAllMealByCafeId(Principal principal);
 
 	void save(MealRequest request);
 
 	MealRequest findOne(Integer id);
 
 	void delete(Integer id);
-
+	
+	List<String> findAllCafeByUserEmail(String email);
+	
+	
+		
 }

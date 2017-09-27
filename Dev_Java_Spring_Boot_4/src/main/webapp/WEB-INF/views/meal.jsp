@@ -10,61 +10,14 @@
 <title>Meal</title>
 </head>
 <body>
+<a href="/addmeal" class="btn btn-outline-warning btn-sm">Add Meal</a>
 	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<form:form action="/admin/meal" method="POST" modelAttribute="meal">
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="title">Title:</label>
-						<div class="col-10">
-							<form:input class="form-control" id="title" path="title"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="description">Description:</label>
-						<div class="col-10">
-							<form:textarea class="form-control" id="description" path="description" rows="5"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="price">Price:</label>
-						<div class="col-10">
-							<form:input class="form-control" id="price" path="price"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="weight">Weight:</label>
-						<div class="col-10">
-							<form:input class="form-control" id="weight" path="weight"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="cuisine">Cuisine:</label>
-						<div class="col-10">
-							<form:select path="cuisine" items="${cuisines}" class="form-control"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-2 col-form-label" for="ingredients">Ingredients:</label>
-						<div class="col-10">
-							<form:select path="ingredients" items="${ingredients}" class="form-control" multiple="multiple"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-10 mr-left">
-							<button class="btn btn-sm btn-outline-success">Save</button>
-							<a href="/admin/meal/cancel" class="btn btn-sm btn-outline-warning">Cancel</a>
-						</div>
-					</div>
-					
-				</form:form>
-			</div>
-		</div>
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">
 					<tr>
 						<th class="text-center">Title</th>
+						<th class="text-center">Cafe</th>
 						<th class="text-center">Description</th>
 						<th class="text-center">Price</th>
 						<th class="text-center">Cuisine</th>
@@ -75,6 +28,7 @@
 					<c:forEach var="meal" items="${meals}">
 						<tr>
 							<td>${meal.title}</td>
+							<td>${meal.cafe}</td>
 							<td>${meal.description}</td>
 							<td>${meal.price}</td>
 							<td>${meal.cuisine}</td>
@@ -85,8 +39,8 @@
 								</c:forEach>
 							</td>
 							<td class="text-center">
-								<a href="/admin/meal/update/${meal.id}" class="btn btn-outline-warning btn-sm">Update</a>
-								<a href="/admin/meal/delete/${meal.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+								<a href="/addmeal/update/${meal.id}" class="btn btn-outline-warning btn-sm">Update</a>
+								<a href="/meal/delete/${meal.id}" class="btn btn-outline-danger btn-sm">Delete</a>
 							</td>
 						</tr>
 					</c:forEach>

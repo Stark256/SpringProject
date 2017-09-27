@@ -1,5 +1,6 @@
 package ua.controller;
 
+import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,51 +17,45 @@ import ua.model.request.MealRequest;
 import ua.service.MealService;
 
 @Controller
-@RequestMapping("/admin/meal")
-@SessionAttributes("meal")
-public class AdminMealController {
+@RequestMapping("/addmeal")
+@SessionAttributes("addmeal")
+public class AddMealController {
 
-	private final MealService service;
+private final MealService service;
 	
 	@Autowired
-	public AdminMealController(MealService service) {
+	public AddMealController(MealService service) {
 		this.service = service;
 	}
 	
-	@ModelAttribute("meal")
+	@ModelAttribute("addmeal")
 	public MealRequest getForm() {
 		return new MealRequest();
 	}
 	
-	@GetMapping
-	public String show(Model model) {
-		model.addAttribute("ingredients", service.findAllIngredients());
-		model.addAttribute("cuisines", service.findAllCuisines());
-		model.addAttribute("meals", service.findAllViews());
-		return "meal";
-	}
-	
-	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id) {
-		service.delete(id);
-		return "redirect:/admin/meal";
-	}
-	
 	@PostMapping
-	public String save(@ModelAttribute("meal") MealRequest request, SessionStatus status) {
+	public String save(@ModelAttribute("addmeal") MealRequest request, SessionStatus status) {
 		service.save(request);
 		return cancel(status);
 	}
 	
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable Integer id, Model model) {
-		model.addAttribute("meal", service.findOne(id));
-		return show(model);
+	public String update(@PathVariable Integer id, Model model,Principal principal) {
+		model.addAttribute("addmeal", service.findOne(id));
+		return show(model,principal);
 	}
 	
 	@GetMapping("/cancel")
 	public String cancel(SessionStatus status) {
 		status.setComplete();
-		return "redirect:/admin/meal";
+		return "redirect:/meal";
+	}
+	
+	@GetMapping
+	public String show(Model model,Principal principal) {
+		model.addAttribute("ingredients", service.findAllIngredients());
+		model.addAttribute("cuisines", service.findAllCuisines());
+		model.addAttribute("cafes", service.findAllCafeByUserEmail(principal.getName()));
+		return "addmeal";
 	}
 }

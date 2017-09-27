@@ -1,11 +1,13 @@
 package ua.controller;
 
+
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import ua.entity.User;
 import ua.service.CafeIndexService;
 
 @Controller
@@ -19,13 +21,18 @@ private final CafeIndexService service;
 	}
 	
 	@GetMapping("/")
-	public String index(Model model, User user) {
-		if(user!=null) {
+	public String index(Model model, Principal principal) {
+		/*if(user!=null) {
 			model.addAttribute("message", "Hello "+user.getEmail());
 			System.out.println(user.getRole());
 			System.out.println(user.getPassword());
 		} else {
 			model.addAttribute("message", "Hello unregistered user");
+		}*/
+		if(principal!=null){
+		model.addAttribute("message", "Hello "+principal.getName());
+		}else{
+			model.addAttribute("message", "Hello unregister user");
 		}
 		model.addAttribute("cafes", service.findTopFiveCafe());
 		return "index";

@@ -52,15 +52,12 @@ margin:1px;
 			<div class="row">
 			<c:forEach var="cafe" items="${cafes}">
 				<div class="col-3 one">
-					<h3>${cafe.name}</h3>
+					<h3><a href="/cafedesc/${cafe.id}">${cafe.name}</a></h3>
 					<h6>${cafe.address}</h6><h6>${cafe.type}</h6>
 					<p>${cafe.shortDescription}</p>
-					<a href="/cafedesc/${cafe.id}" class="btn btn-outline-warning btn-sm">Show Description</a>
-					<a href="/cafemeal/${cafe.id}" class="btn btn-outline-warning btn-sm">Show Meals</a>
 				</div>
 				</c:forEach>
 			</div>
-			
 		</div>
 	
 	

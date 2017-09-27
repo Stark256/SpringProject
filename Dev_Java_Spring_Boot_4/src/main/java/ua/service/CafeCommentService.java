@@ -1,7 +1,17 @@
 package ua.service;
 
-import ua.entity.CafeComment;
+import java.util.List;
 
-public interface CafeCommentService extends CrudService<CafeComment,Integer>{
+import ua.model.request.CafeCommentRequest;
+import ua.model.view.CafeCommentView;
 
+public interface CafeCommentService{
+
+
+	List<CafeCommentView> findAllCommentByCafeId(Integer id);
+
+	void saveComment(CafeCommentRequest commentRequest, Integer id);
+	
+	
+	
 }

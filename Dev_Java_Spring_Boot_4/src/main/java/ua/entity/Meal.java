@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -41,8 +40,6 @@ public class Meal extends AbstractEntity{
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Cafe cafe;
 	
-	@OneToMany(mappedBy="meal")
-	private List<MealComment> comment;
 	
 	public List<Order> getOrders() {
 		return orders;
@@ -51,6 +48,7 @@ public class Meal extends AbstractEntity{
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
+
 
 	public Cafe getCafe() {
 		return cafe;
