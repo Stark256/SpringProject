@@ -1,6 +1,5 @@
 package ua.entity;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,9 @@ import javax.persistence.Table;
 @Table(name="cafe")
 public class Cafe extends AbstractEntityName{
 	
-	private BigDecimal rate;
+	private int rate;
+	
+	private int countRate;
 	
 	private String photoUrl;
 	
@@ -65,12 +66,6 @@ public class Cafe extends AbstractEntityName{
 	}
 	public void setMeals(List<Meal> meals) {
 		this.meals = meals;
-	}
-	public BigDecimal getRate() {
-		return rate;
-	}
-	public void setRate(BigDecimal rate) {
-		this.rate = rate;
 	}
 	public String getPhotoUrl() {
 		return photoUrl;
@@ -138,5 +133,20 @@ public class Cafe extends AbstractEntityName{
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public int getCountRate() {
+		return countRate;
+	}
+	public void setCountRate(int countRate) {
+		this.countRate = countRate;
+	}
+	public int getRate() {
+		return rate;
+	}
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
+
+	
+	
 	
 }

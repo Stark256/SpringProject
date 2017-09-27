@@ -1,10 +1,10 @@
 package ua.service.impl;
 
-import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import org.springframework.stereotype.Service;
 
@@ -46,7 +46,8 @@ public class CafeServiceImpl   implements CafeService {
 		Cafe cafe=new Cafe();
 		cafe.setName(request.getName());
 		cafe.setId(request.getId());
-		cafe.setRate(new BigDecimal(0));
+		cafe.setRate(request.getRate());
+		cafe.setCountRate(request.getCountRate());
 		cafe.setShortDescription(request.getShortDescription());
 		cafe.setPhotoUrl(request.getPhotoUrl());
 		cafe.setAddress(request.getAddress());
@@ -80,6 +81,7 @@ public class CafeServiceImpl   implements CafeService {
 		request.setName(cafe.getName());
 		request.setId(cafe.getId());
 		request.setRate(cafe.getRate());
+		request.setCountRate(cafe.getCountRate());
 		request.setPhotoUrl(cafe.getPhotoUrl());
 		request.setAddress(cafe.getAddress());
 		request.setVersion(cafe.getVersion());
@@ -106,6 +108,7 @@ public class CafeServiceImpl   implements CafeService {
 		request.setName(cafe.getName());
 		request.setId(cafe.getId());
 		request.setRate(cafe.getRate());
+		request.setCountRate(cafe.getCountRate());
 		request.setPhotoUrl(cafe.getPhotoUrl());
 		request.setAddress(cafe.getAddress());
 		request.setVersion(cafe.getVersion());

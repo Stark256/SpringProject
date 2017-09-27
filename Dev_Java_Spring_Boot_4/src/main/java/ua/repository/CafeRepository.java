@@ -13,7 +13,7 @@ import ua.model.view.CafeView;
 public interface CafeRepository extends JpaNameRepository<Cafe>{
 
 	
-	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address,c.fullDescription,c.shortDescription, c.type, c.phone, op.time, cl.time) FROM Cafe c JOIN c.open op JOIN c.close cl")
+	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate,c.countRate, c.name, c.photoUrl, c.version, c.address,c.fullDescription,c.shortDescription, c.type, c.phone, op.time, cl.time) FROM Cafe c JOIN c.open op JOIN c.close cl")
 	List<CafeView> findAllViews();
 	
 	@Query("SELECT t.time FROM OpenClose t")
@@ -28,7 +28,7 @@ public interface CafeRepository extends JpaNameRepository<Cafe>{
 	@Query("SELECT u FROM User u WHERE u.email=?1")
 	User findOneUserByEmail(String email);
 	
-	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate, c.name, c.photoUrl, c.version, c.address,c.fullDescription,c.shortDescription, c.type, c.phone, op.time, cl.time) FROM Cafe c JOIN c.open op JOIN c.close cl WHERE c.user.email=?1")
+	@Query("SELECT new ua.model.view.CafeView(c.id, c.rate,c.countRate, c.name, c.photoUrl, c.version, c.address,c.fullDescription,c.shortDescription, c.type, c.phone, op.time, cl.time) FROM Cafe c JOIN c.open op JOIN c.close cl WHERE c.user.email=?1")
 	List<CafeView> findAllCafeByUserEmail(String email);
 	
 	@Query("SELECT cc FROM CafeComment cc WHERE cc.cafe.id=?1")
