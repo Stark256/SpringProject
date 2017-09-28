@@ -16,11 +16,7 @@
 		<a href="/admin/cuisine">Cuisine</a>
 		 <br> <a href="/admin/ingredient">Ingredient</a> 
 			<br> <a	href="/admin/time">Time</a> 
-			<br> <a href="/admin/user">Users</a>
-		<br> <a href="/admin/meal">Meal</a>
-		<br> <a href="/admin/cafe">Cafe</a>
 		<br> <a href="/admin/table">Table</a>
-		<br> <a href="/admin/cafeindex">CafeIndex</a>
 	</div>
 </body>
 </html>

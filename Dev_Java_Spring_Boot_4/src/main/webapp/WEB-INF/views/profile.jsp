@@ -41,6 +41,7 @@
 						<th class="text-center">Phone</th>
 						<th class="text-center">Open</th>
 						<th class="text-center">Close</th>
+						<th class="text-center">Table</th>
 					</tr>
 					<c:forEach var="cafe" items="${cafes}">
 						<tr>
@@ -52,6 +53,7 @@
 							<td>${cafe.phone}</td>
 							<td>${cafe.open}</td>
 							<td>${cafe.close}</td>
+							<td><a href="/profile/cafe/addtable/${cafe.id}" class="btn btn-outline-danger btn-sm">Tables</a></td>
 						</tr>
 					</c:forEach>
 				</table>

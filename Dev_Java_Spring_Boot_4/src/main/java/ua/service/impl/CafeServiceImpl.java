@@ -134,6 +134,12 @@ public class CafeServiceImpl   implements CafeService {
 	}
 
 
+	@Override
+	public Cafe findOneRequest(Integer id) {
+		return repository.findOneRequest(id);
+	}
+
+
 	
 }
 

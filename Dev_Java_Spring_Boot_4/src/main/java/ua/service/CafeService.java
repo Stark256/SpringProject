@@ -4,7 +4,7 @@ import java.security.Principal;
 import java.time.LocalTime;
 import java.util.List;
 
-
+import ua.entity.Cafe;
 import ua.entity.Type;
 import ua.entity.User;
 import ua.model.request.CafeRequest;
@@ -22,6 +22,8 @@ public interface CafeService {
 	void save(CafeRequest request,Principal principal);
 
 	CafeRequest findOne(Integer id);
+	
+	Cafe findOneRequest(Integer id);
 
 	void delete(Integer id);
 	

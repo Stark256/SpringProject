@@ -40,11 +40,10 @@
 							<td>${cafe.open}</td>
 							<td>${cafe.close}</td>
 							
-							<td class="text-center"><a
-								href="/addcafe/update/${cafe.id}"
-								class="btn btn-outline-warning btn-sm">Update</a> <a
-								href="/cafe/delete/${cafe.id}"
-								class="btn btn-outline-danger btn-sm">Delete</a></td>
+							<td class="text-center">
+								<a href="/addcafe/update/${cafe.id}" class="btn btn-outline-warning btn-sm">Update</a> 
+								<a href="/cafe/delete/${cafe.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
