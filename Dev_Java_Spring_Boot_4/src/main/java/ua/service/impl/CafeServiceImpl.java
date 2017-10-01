@@ -140,6 +140,15 @@ public class CafeServiceImpl   implements CafeService {
 	}
 
 
+	@Override
+	public void saveRate(Integer rate,Integer id) {
+		Cafe cafe=repository.findOne(id);
+		cafe.setRate(rate);
+		cafe.setCountRate(cafe.getCountRate()+1);
+		repository.save(cafe);
+	}
+
+
 	
 }
 

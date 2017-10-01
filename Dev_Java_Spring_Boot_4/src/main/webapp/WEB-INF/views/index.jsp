@@ -1,3 +1,4 @@
+<%@ include file="header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -23,7 +24,7 @@ margin:1px;
 </style>
 </head>
 <body>
-	<h2>${message}</h2>
+	<!-- <h2>${message}</h2>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<div class="row">
 		<form:form action="/logout">
@@ -47,11 +48,8 @@ margin:1px;
 		<button ><a href="/profile">Profile</a></button>
 		</div>
 		</div>
-	</sec:authorize>	
-	<div class="container">		
-			<div class="row"><a href="/yura/allcafe">All Cafe</a></div>
-			<div class="row"><a href="/yura/allmeal">All Meal</a></div>
-	</div>
+	</sec:authorize>-->
+	
 	
 		<div class="container">		
 			<div class="row">

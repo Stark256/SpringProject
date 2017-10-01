@@ -1,3 +1,4 @@
+<%@ include file="header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -86,7 +87,7 @@ label.star:before {
 		</div>
 		<div class="row">
 			<div class="stars">
-				  <form action="">
+				  <form action="/cafedesc/rating/${cafe.id}" method="POST">
 				    <input class="star star-5" id="star-5" value="5" type="radio" name="star"/>
 				   <label class="star star-5" for="star-5"></label>
 				    <input class="star star-4" id="star-4" value="4" type="radio" name="star"/>
@@ -97,6 +98,7 @@ label.star:before {
 				     <label class="star star-2" for="star-2"></label>
 				    <input class="star star-1" id="star-1" value="1" type="radio" name="star"/>
 				     <label class="star star-1" for="star-1"></label>
+				     <button class="btn btn-sm btn-outline-success">Save</button>
 				  </form>
 			</div>
 		</div> 
