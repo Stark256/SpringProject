@@ -2,15 +2,30 @@ package ua.service;
 
 
 
+import java.util.List;
+
 import ua.entity.Order;
+import ua.entity.Table;
+import ua.model.request.OrderRequest;
+import ua.model.view.OrderView;
 
-public interface OrderService extends CrudService<Order,Integer>{
+public interface OrderService {
 
-//	
-//	List<String> findAllCafes();
-//	
-//	List<String> findAllMealsByCafeId(Integer id);
-//	
-//	List<String> findAlltablesByCafeId(Integer id);
+	List<String> findAllMealByCafeId(Integer id);
+	
+	List<OrderView> findAllViews();
+	
+	void save(OrderRequest request);
+	
+	  
+	  void delete(Integer id);
+	  
+	  OrderRequest findOne(Integer id);
+	  
+	  List<OrderView> findAllOrdersByCafeId(Integer id);
+	  
+	  Table findOneTable(Integer id);
+	  
+	  Order findOneOrderByTableId(Integer id);
 	
 }

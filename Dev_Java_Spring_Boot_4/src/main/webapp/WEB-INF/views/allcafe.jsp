@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
@@ -10,25 +10,10 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
 	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
 	crossorigin="anonymous">
-<title>Profile</title>
+<title>Cafe</title>
 </head>
 <body>
 	<div class="container">
-		<h2>Profile</h2>
-		<a href="/cafe">Cafe</a>
-		<a href="/meal">Meal</a>
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<table class="table table-bordered">
-							<tr>
-								<td>${user.email}</td>
-								<td>${user.role}</td>
-							</tr>
-					</table>
-				</div>
-			</div>
-		</div>
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">
@@ -41,7 +26,6 @@
 						<th class="text-center">Phone</th>
 						<th class="text-center">Open</th>
 						<th class="text-center">Close</th>
-						<th class="text-center">Table</th>
 					</tr>
 					<c:forEach var="cafe" items="${cafes}">
 						<tr>
@@ -53,13 +37,11 @@
 							<td>${cafe.phone}</td>
 							<td>${cafe.open}</td>
 							<td>${cafe.close}</td>
-							<td><a href="/profile/cafe/addtable/${cafe.id}" class="btn btn-outline-danger btn-sm">Tables</a></td>
-							
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 		</div>
-	</div>	
+	</div>
 </body>
 </html>

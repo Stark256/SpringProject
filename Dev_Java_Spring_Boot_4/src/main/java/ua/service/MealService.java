@@ -3,6 +3,7 @@ package ua.service;
 import java.security.Principal;
 import java.util.List;
 
+import ua.entity.Meal;
 import ua.model.request.MealRequest;
 import ua.model.view.MealView;
 
@@ -21,6 +22,8 @@ public interface MealService {
 	void delete(Integer id);
 	
 	List<String> findAllCafeByUserEmail(String email);
+	
+	List<Meal> findAllView();
 	
 	
 		

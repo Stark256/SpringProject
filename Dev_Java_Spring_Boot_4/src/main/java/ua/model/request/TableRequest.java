@@ -1,11 +1,15 @@
 package ua.model.request;
 
+
 import ua.entity.Cafe;
+import ua.entity.OpenClose;
 
 public class TableRequest {
 
 	
 	private Integer id;
+	
+	private OpenClose timeReserv;
 	
 	private int countOfPeople;
 	
@@ -17,6 +21,16 @@ public class TableRequest {
 	
 	private Cafe cafe;
 	
+	
+	
+
+	public OpenClose getTimeReserv() {
+		return timeReserv;
+	}
+
+	public void setTimeReserv(OpenClose timeReserv) {
+		this.timeReserv = timeReserv;
+	}
 
 	public Integer getId() {
 		return id;

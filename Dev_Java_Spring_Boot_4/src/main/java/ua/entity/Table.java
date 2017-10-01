@@ -1,6 +1,7 @@
 package ua.entity;
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,8 @@ import javax.persistence.ManyToOne;
 @javax.persistence.Table(name="_table")
 public class Table extends AbstractEntity{
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private OpenClose timeReserv;
 	
 	private String user;
 	
@@ -24,6 +27,15 @@ public class Table extends AbstractEntity{
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Cafe cafe;
 
+	
+
+	public OpenClose getTimeReserv() {
+		return timeReserv;
+	}
+
+	public void setTimeReserv(OpenClose timeReserv) {
+		this.timeReserv = timeReserv;
+	}
 
 	public int getCountOfPeople() {
 		return countOfPeople;
@@ -48,7 +60,8 @@ public class Table extends AbstractEntity{
 	public void setCafe(Cafe cafe) {
 		this.cafe = cafe;
 	}
-
+	
+	
 
 	public String getUser() {
 		return user;

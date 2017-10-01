@@ -1,11 +1,14 @@
 package ua.service.impl;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ua.entity.Cafe;
+import ua.entity.OpenClose;
+import ua.entity.Order;
 import ua.entity.Table;
 import ua.model.request.TableRequest;
 import ua.model.view.TableView;
@@ -41,6 +44,7 @@ public class TableServiceImpl implements TableService {
   public void save(TableRequest request) {
     Table table = new Table();
     table.setId(request.getId());
+    table.setTimeReserv(request.getTimeReserv());
     table.setCountOfPeople(request.getCountOfPeople());
     table.setUser(request.getUser());
     table.setUserPhone(request.getUserPhone());
@@ -59,6 +63,7 @@ public class TableServiceImpl implements TableService {
     Table table = repository.findOne(id);
     TableRequest request = new TableRequest();
     request.setId(table.getId());
+    request.setTimeReserv(table.getTimeReserv());
     request.setCountOfPeople(Integer.valueOf(table.getCountOfPeople()));
     request.setUser(table.getUser());
     request.setUserPhone(table.getUserPhone());
@@ -66,5 +71,19 @@ public class TableServiceImpl implements TableService {
     request.setCafe(table.getCafe());
     return request;
   }
+
+@Override
+public List<LocalTime> findAllOpenCloses() {
+	return repository.findAllOpenClose();
+}
+
+@Override
+public OpenClose findOneOpenClose(Integer id) {
+	return repository.findOneOpenClose(id);
+}
+
+
+
+
 
 }

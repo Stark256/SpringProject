@@ -102,6 +102,11 @@ label.star:before {
 		</div> 
 		<div class="row">		
 			<div class="col-12">
+				<a href="/clientRes/addtable/${cafe.id}/client" class="btn btn-sm btn-outline-info">Reserv Table</a>
+			</div>
+			</div>
+		<div class="row">		
+			<div class="col-12">
 				<table class="table table-bordered">
 						<tr>
 							<th>Meal title</th>

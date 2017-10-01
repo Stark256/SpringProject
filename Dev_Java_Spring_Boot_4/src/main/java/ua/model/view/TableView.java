@@ -1,5 +1,7 @@
 package ua.model.view;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class TableView {
 
@@ -15,15 +17,37 @@ public class TableView {
 	
 	private String cafe;
 	
+	private String timeReserv;
+	
 
-	public TableView(Integer id,  int countOfPeople, boolean isFree, String user, String userPhone, String cafe) {
+	public TableView(Integer id,  int countOfPeople, boolean isFree, String user, String userPhone, String cafe,LocalTime timeReserv) {
 		this.id = id;
 		this.countOfPeople = countOfPeople;
 		this.isFree = isFree;
 		this.user = user;
 		this.userPhone = userPhone;
 		this.cafe = cafe;
+		this.timeReserv=timeReserv.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 	}
+
+	
+
+
+
+	public String getTimeReserv() {
+		return timeReserv;
+	}
+
+
+
+
+
+	public void setTimeReserv(String timeReserv) {
+		this.timeReserv = timeReserv;
+	}
+
+
+
 
 
 	public Integer getId() {

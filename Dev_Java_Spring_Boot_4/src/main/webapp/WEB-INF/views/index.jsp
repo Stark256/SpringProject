@@ -48,6 +48,11 @@ margin:1px;
 		</div>
 		</div>
 	</sec:authorize>	
+	<div class="container">		
+			<div class="row"><a href="/yura/allcafe">All Cafe</a></div>
+			<div class="row"><a href="/yura/allmeal">All Meal</a></div>
+	</div>
+	
 		<div class="container">		
 			<div class="row">
 			<c:forEach var="cafe" items="${cafes}">

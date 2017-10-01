@@ -16,7 +16,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <form:form action="/profile/cafe/addtable/${cafeId}/reserve/${_table.id}" method="POST" modelAttribute="_table">
+        <form:form action="/clientRes/addtable/${cafeId}/client/${_table.id}" method="POST" modelAttribute="_table">
           <div class="form-group row">
             <label class="col-2 col-form-label" for="user">Name :</label>
             <div class="col-10">
@@ -29,7 +29,7 @@
               <form:input class="form-control" id="userPhone" path="userPhone" />
             </div>
           </div>
-          <div class="form-group row">
+           <div class="form-group row">
 			<label class="col-2 col-form-label" for="timeReserv">Time :</label>
 			<div class="col-10">
 				<form:select class="form-control"  items="${times}" path="timeReserv" />
@@ -38,7 +38,7 @@
           <div class="form-group row">
             <div class="col-10 ml-auto">
               <button class="btn btn-sm btn-outline-success">Save</button>
-              <a href="/profile/cafe/addtable/${cafeId}"
+              <a href="/clientRes/addtable/${cafeId}/client/${table.id}" 
                 class="btn btn-sm btn-outline-warning">Cancel</a>
             </div>
           </div>

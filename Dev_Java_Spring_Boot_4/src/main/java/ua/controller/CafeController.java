@@ -34,4 +34,6 @@ public class CafeController {
 		return "redirect:/cafe";
 	}
 	
+	
+
 }

@@ -39,12 +39,14 @@
       <div class="col-12">
         <table class="table table-bordered">
           <tr>
-            <th class="text-center">Number of chairs</th>
+            <th class="text-center">Count of chairs</th>
             <th class="text-center">Is Free</th>
             <th class="text-center">Cafe</th>
             <th class="text-center">User</th>
             <th class="text-center">User phone</th>
+            <th class="text-center">Time</th>
             <th class="text-center">Options</th>
+            <th class="text-center">Reservation</th>
           </tr>
           <c:forEach var="table" items="${tables}">
             <tr>
@@ -53,19 +55,25 @@
               <td>${table.cafe}</td>
               <td>${table.user}</td>
               <td>${table.userPhone}</td>
+              <td>${table.timeReserv}</td>
               
-              
-              <td class="text-center"><a
+              <td class="text-center"><!-- <a
                 href="/profile/cafe/addtable/${cafeId}/update/${table.id}"
-                class="btn btn-outline-warning btn-sm">Update</a> <a
+                class="btn btn-outline-warning btn-sm">Update</a> --> <a
                 href="/profile/cafe/addtable/${cafeId}/delete/${table.id}"
-                class="btn btn-outline-danger btn-sm">Delete</a> <a
-                href="/profile/cafe/addtable/${cafeId}/reserve/${table.id}"
-                class="btn btn-outline-danger btn-sm">Reserve</a></td>
+                class="btn btn-outline-danger btn-sm">Delete</a> </td>
+                <td class="text-center">
+           		 <c:if test="${table.isFree.equals(true)}">
+                	 <a  href="/profile/cafe/addtable/${cafeId}/reserve/${table.id}"  class="btn btn-outline-success btn-sm">Book</a>
+                 </c:if>
+                <c:if test="${table.isFree.equals(false)}">
+                	 <a  href="/profile/cafe/addtable/${cafeId}/unbook/${table.id}"  class="btn btn-outline-danger btn-sm">Unbook</a>
+                	  <a href="/order/someth/${cafeId}/table/${table.id}" class="btn btn-outline-danger btn-sm">Order</a>
+                 </c:if>
+                </td>
             </tr>
           </c:forEach>
         </table>
-        <a href="/profile/profilecafe/${cafeId}" class="btn btn-outline-secondary">Cafe</a>
       </div>
     </div>
   </div>

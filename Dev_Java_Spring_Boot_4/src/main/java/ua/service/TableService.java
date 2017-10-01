@@ -1,9 +1,11 @@
 package ua.service;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import ua.entity.Cafe;
-import ua.entity.Table;
+import ua.entity.OpenClose;
+import ua.entity.Order;
 import ua.model.request.TableRequest;
 import ua.model.view.TableView;
 
@@ -21,4 +23,9 @@ public interface TableService{
   
   TableRequest findOne(Integer id);
   
+  List<LocalTime> findAllOpenCloses();
+  
+  OpenClose findOneOpenClose(Integer id);
+  
+
 }
