@@ -47,7 +47,7 @@ public class ClientTableController {
 	  request.setId(tableId);
 	  request.setIsFree(false);
 	  System.out.println(request.getId());
-	  service.save(request);
+	  service.saveReserv(request);
 	    return "redirect:/cafedesc/{id}";
 	  } 
 }

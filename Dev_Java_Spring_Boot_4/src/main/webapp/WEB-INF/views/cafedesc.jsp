@@ -104,7 +104,7 @@ label.star:before {
 		</div> 
 		<div class="row">		
 			<div class="col-12">
-				<a href="/clientRes/addtable/${cafe.id}/client" class="btn btn-sm btn-outline-info">Reserv Table</a>
+				<a href="/clientRes/addtable/${cafe.id}/client" class="btn btn-sm btn-outline-info">Reserve Table</a>
 			</div>
 			</div>
 		<div class="row">		

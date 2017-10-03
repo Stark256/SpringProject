@@ -8,6 +8,8 @@ import ua.entity.Meal;
 public class OrderRequest {
 	
 	private Integer id;
+	
+	private String status;
 
 	private List<Meal> meals = new ArrayList<>();
 	
@@ -36,5 +38,15 @@ public class OrderRequest {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
 	
 }

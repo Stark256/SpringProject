@@ -19,6 +19,7 @@
       <div class="col-12">
         <table class="table table-bordered">
           <tr>
+            <th class="text-center">Number</th>
             <th class="text-center">Count of chairs</th>
             <th class="text-center">Is Free</th>
             <th class="text-center">Cafe</th>
@@ -27,6 +28,7 @@
           </tr>
           <c:forEach var="table" items="${tables}">
             <tr>
+              <td>№${table.number}</td>
               <td>${table.countOfPeople}</td>
               <td>${table.isFree}</td>
               <td>${table.cafe}</td>

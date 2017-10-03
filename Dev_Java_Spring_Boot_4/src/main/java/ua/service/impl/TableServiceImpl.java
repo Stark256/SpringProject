@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import ua.entity.Cafe;
 import ua.entity.OpenClose;
-import ua.entity.Order;
 import ua.entity.Table;
 import ua.model.request.TableRequest;
 import ua.model.view.TableView;
@@ -41,9 +40,10 @@ public class TableServiceImpl implements TableService {
   }
 
   @Override
-  public void save(TableRequest request) {
+  public void saveReserv(TableRequest request) {
     Table table = new Table();
     table.setId(request.getId());
+    table.setNumber(request.getNumber());
     table.setTimeReserv(request.getTimeReserv());
     table.setCountOfPeople(request.getCountOfPeople());
     table.setUser(request.getUser());
@@ -51,6 +51,19 @@ public class TableServiceImpl implements TableService {
     table.setIsFree(request.getIsFree());
     table.setCafe(request.getCafe());
     repository.save(table);
+  }
+  @Override
+  public void save(TableRequest request) {
+	  Table table = new Table();
+	  //  table.setId(request.getId());
+	  	table.setNumber(request.getNumber());
+	    table.setTimeReserv(request.getTimeReserv());
+	    table.setCountOfPeople(request.getCountOfPeople());
+	    table.setUser(request.getUser());
+	    table.setUserPhone(request.getUserPhone());
+	    table.setIsFree(request.getIsFree());
+	    table.setCafe(request.getCafe());
+	    repository.save(table);
   }
 
   @Override
@@ -63,6 +76,7 @@ public class TableServiceImpl implements TableService {
     Table table = repository.findOne(id);
     TableRequest request = new TableRequest();
     request.setId(table.getId());
+    request.setNumber(table.getNumber());
     request.setTimeReserv(table.getTimeReserv());
     request.setCountOfPeople(Integer.valueOf(table.getCountOfPeople()));
     request.setUser(table.getUser());

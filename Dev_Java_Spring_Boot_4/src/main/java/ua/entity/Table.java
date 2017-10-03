@@ -16,6 +16,7 @@ public class Table extends AbstractEntity{
 	
 	private String user;
 	
+	private int number;
 	
 	@Column(length=15)
 	private String userPhone;
@@ -79,6 +80,14 @@ public class Table extends AbstractEntity{
 		this.userPhone = userPhone;
 	}
 
+	public int getNumber() {
+		return number;
+	}
 
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	
 	
 }

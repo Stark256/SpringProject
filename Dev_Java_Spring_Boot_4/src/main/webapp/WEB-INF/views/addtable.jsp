@@ -19,8 +19,14 @@
       <div class="col-12">
         <form:form action="/profile/cafe/addtable/${cafeId}" method="POST" modelAttribute="_table">
           <div class="form-group row">
-            <label class="col-2 col-form-label" for="countOfPeople">Count
-              of chairs :</label>
+            <label class="col-2 col-form-label" for="number">Number :</label>
+            <div class="col-10">
+              <form:input class="form-control" id="number" 
+                path="number" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label" for="countOfPeople">Count of chairs :</label>
             <div class="col-10">
               <form:input class="form-control" id="countOfPeople" 
                 path="countOfPeople" />
@@ -37,9 +43,15 @@
       </div>
     </div>
     <div class="row">
+      	<div class="col-12">
+      		<a href="/order/allorders/${cafeId}" class="btn btn-outline-danger btn-sm">All Orders</a>
+    	</div>
+    </div>
+    <div class="row">
       <div class="col-12">
         <table class="table table-bordered">
           <tr>
+         	 <th class="text-center">Number</th>
             <th class="text-center">Count of chairs</th>
             <th class="text-center">Is Free</th>
             <th class="text-center">Cafe</th>
@@ -51,6 +63,7 @@
           </tr>
           <c:forEach var="table" items="${tables}">
             <tr>
+             <td>№${table.number}</td>
               <td>${table.countOfPeople}</td>
               <td>${table.isFree}</td>
               <td>${table.cafe}</td>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ua.entity.Order;
+import ua.entity.Status;
 import ua.entity.Table;
 import ua.model.request.OrderRequest;
 import ua.model.view.OrderView;
@@ -27,7 +28,9 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void save(OrderRequest request) {
 		Order order=new Order();
-		order.setId(request.getId());
+		//order.setId(request.getId());
+		request.setStatus(Status.ACCEPTED.toString());
+		order.setStatus(Status.valueOf(request.getStatus()));
 		order.setMeals(request.getMeals());
 		order.setTable(request.getTable());
 		repository.save(order);
@@ -42,6 +45,7 @@ public class OrderServiceImpl implements OrderService {
 	public OrderRequest findOne(Integer id) {
 		Order order=repository.findOneRequest(id);
 		OrderRequest request = new OrderRequest();
+		request.setStatus(order.getStatus().toString());
 		request.setId(order.getId());
 		request.setMeals(order.getMeals());
 		request.setTable(order.getTable());
@@ -66,14 +70,19 @@ public class OrderServiceImpl implements OrderService {
 	@Transactional(readOnly=true)
 	public List<OrderView> findAllOrdersByCafeId(Integer id) {
 		List<OrderView> views = repository.findAllOrdersByCafeId(id);
-		views.forEach(this::loadMeals);
+		for (OrderView order : views) {
+			order.setMeals(repository.findAllMealsByOrderId(order.getId()));
+		}
+		
+		
+		//views.forEach(this::loadMeals);
 		return views;
 	}
 	
-	private void loadMeals(OrderView view) {
+	/*private void loadMeals(OrderView view) {
 		view.setMeals(repository.findAllMealsByOrderId(view.getId()));
 		//view.setIngredients(repository.findAllIngredientsByMealId(view.getId()));
-	}
+	}*/
 
 
 
@@ -83,8 +92,34 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Order findOneOrderByTableId(Integer id) {
-		return repository.findOneOrderByTableId(id);
+	public List<Order> findAllOrderByTableId(Integer id) {
+		return repository.findAllOrderByTableId(id);
+	}
+
+	@Override
+	public List<String> findAllMealsByOrderId(Integer id) {
+		return repository.findAllMealsByOrderId(id);
+	}
+
+	@Override
+	public void setAccepted(Integer id) {
+		Order order=repository.findOne(id);
+		order.setStatus(Status.ACCEPTED);
+		repository.save(order);
+	}
+
+	@Override
+	public void setCompleted(Integer id) {
+		Order order=repository.findOne(id);
+		order.setStatus(Status.COMPLETED);
+		repository.save(order);
+	}
+
+	@Override
+	public void setPaid(Integer id) {
+		Order order=repository.findOne(id);
+		order.setStatus(Status.PAID);
+		repository.save(order);
 	}
 
 	

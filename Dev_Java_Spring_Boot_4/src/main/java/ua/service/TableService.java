@@ -5,7 +5,6 @@ import java.util.List;
 
 import ua.entity.Cafe;
 import ua.entity.OpenClose;
-import ua.entity.Order;
 import ua.model.request.TableRequest;
 import ua.model.view.TableView;
 
@@ -18,6 +17,7 @@ public interface TableService{
   List<TableView> findTableViewsByCafeId(Integer id);
   
   void save(TableRequest request);
+  void saveReserv(TableRequest request);
   
   void delete(Integer id);
   

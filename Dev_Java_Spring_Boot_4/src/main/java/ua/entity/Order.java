@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -13,6 +14,10 @@ import javax.persistence.Table;
 @Table(name="_order")
 public class Order extends AbstractEntity {
 
+	@Enumerated
+	private Status status;
+	
+	
 	@ManyToMany
 	private List<Meal> meals = new ArrayList<>();
 	
@@ -34,4 +39,14 @@ public class Order extends AbstractEntity {
 	public void setTable(ua.entity.Table table) {
 		this.table = table;
 	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
+	
 }

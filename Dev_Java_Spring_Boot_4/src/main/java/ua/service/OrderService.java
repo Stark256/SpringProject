@@ -26,6 +26,14 @@ public interface OrderService {
 	  
 	  Table findOneTable(Integer id);
 	  
-	  Order findOneOrderByTableId(Integer id);
+	  List<Order> findAllOrderByTableId(Integer id);
+	  
+	  List<String> findAllMealsByOrderId(Integer id);
+	  
+	  void setAccepted(Integer id);
+	  
+	  void setCompleted(Integer id);
+	  
+	  void setPaid(Integer id);
 	
 }

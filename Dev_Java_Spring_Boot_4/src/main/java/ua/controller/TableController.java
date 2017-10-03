@@ -1,6 +1,9 @@
 package ua.controller;
 
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,10 +50,14 @@ public class TableController {
   @GetMapping("/addtable/{id}/delete/{tableId}")
   public String delete(@PathVariable Integer id,@PathVariable Integer tableId) {
 	  
-	  Order order=orderService.findOneOrderByTableId(tableId);
+	  /*List<Order> order=orderService.findAllOrderByTableId(tableId);
 	 if(order!=null){
-	 orderService.delete(order.getId());
-	 }
+		 Iterator<Order> iter=order.iterator();
+	    	while(iter.hasNext()){
+	    		Order tmp=iter.next();
+	    		orderService.delete(tmp.getId());
+	    	}
+	 }*/
 	 service.delete(tableId);
     return "redirect:/profile/cafe/addtable/{id}";
   }
@@ -85,7 +92,7 @@ public class TableController {
 	  request.setId(tableId);
   request.setIsFree(false);
   System.out.println(request.getId());
-  service.save(request);
+  service.saveReserv(request);
     return "redirect:/profile/cafe/addtable/{id}";
   } 
   
@@ -98,13 +105,7 @@ public class TableController {
     request.setUser(null);
     request.setUserPhone(null);
     request.setTimeReserv(service.findOneOpenClose(1));
-    
-    Order order=orderService.findOneOrderByTableId(tableId);
-    if(order!=null){
-    orderService.delete(order.getId());
-    }
-    
-     service.save(request);
+     service.saveReserv(request);
     return "redirect:/profile/cafe/addtable/{id}";
   }
   

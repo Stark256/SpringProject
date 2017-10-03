@@ -3,19 +3,41 @@ package ua.model.view;
 import java.util.ArrayList;
 import java.util.List;
 
+import ua.entity.Status;
+import ua.entity.Table;
+
+
 
 public class OrderView {
 
 	private Integer id;
 	
+	private String status;
+	
 	private List<String> meals = new ArrayList<>();
 	
-	private int table;
+	private Integer table;
+	
+	private Integer tableId;
+	
 
-	public OrderView(Integer id, int table) {
+	public OrderView(Integer id, int table,Status status,int tableId) {
 		this.id = id;
-		this.table = table;
+		this.table = Integer.valueOf(table);
+		this.status=status.name();
+		this.tableId = tableId;
 	}
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -33,15 +55,26 @@ public class OrderView {
 		this.meals = meals;
 	}
 
-	public int getTable() {
+
+	public Integer getTable() {
 		return table;
 	}
 
-	public void setTable(int table) {
+
+	public void setTable(Integer table) {
 		this.table = table;
 	}
 
-	
+
+	public Integer getTableId() {
+		return tableId;
+	}
+
+
+	public void setTableId(Integer tableId) {
+		this.tableId = tableId;
+	}
+
 	
 	
 }
