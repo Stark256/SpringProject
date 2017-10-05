@@ -1,6 +1,9 @@
 package ua.controller;
 
 
+import java.util.List;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import ua.entity.Cafe;
 import ua.entity.OpenClose;
+import ua.service.CafeService;
 import ua.service.OpenCloseService;
 
 @Controller
@@ -21,10 +26,13 @@ import ua.service.OpenCloseService;
 public class AdminOpenCloseController {
 	
 private final OpenCloseService service;
+
+private final CafeService cafeService;
 	
 	@Autowired
-	public AdminOpenCloseController(OpenCloseService service) {
+	public AdminOpenCloseController(OpenCloseService service,CafeService cafeService) {
 		this.service=service;
+		this.cafeService=cafeService;
 	}
 	
 	@GetMapping
@@ -40,6 +48,10 @@ private final OpenCloseService service;
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
+		List<Cafe> cafes=cafeService.findAllCafeByTimeId(id);
+		for (Cafe cafe : cafes) {
+			cafeService.delete(cafe.getId());
+		}
 		service.delete(id);
 		return "redirect:/admin/time";
 	}
@@ -57,7 +69,18 @@ private final OpenCloseService service;
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("time") OpenClose openClose,SessionStatus status) {
+	public String save(@ModelAttribute("time") OpenClose openClose,Model model,SessionStatus status) {
+		List<OpenClose> times=service.findAll();
+		boolean unique=false;
+		for (OpenClose openClose2 : times) {
+			if(openClose.getTime().equals(openClose2.getTime())){
+				unique=true;
+			}
+		}
+		if(unique){
+			model.addAttribute("notUnique", true);
+			return show(model);
+		}
 		service.save(openClose);
 		return cancel(status);
 	}

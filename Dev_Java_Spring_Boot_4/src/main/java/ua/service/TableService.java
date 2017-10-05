@@ -5,6 +5,7 @@ import java.util.List;
 
 import ua.entity.Cafe;
 import ua.entity.OpenClose;
+import ua.entity.Table;
 import ua.model.request.TableRequest;
 import ua.model.view.TableView;
 
@@ -26,6 +27,9 @@ public interface TableService{
   List<LocalTime> findAllOpenCloses();
   
   OpenClose findOneOpenClose(Integer id);
+  
+  List<Table> findTablesByCafeId(Integer id);
+  
   
 
 }

@@ -1,6 +1,8 @@
 package ua.model.request;
 
 
+
+
 import ua.entity.OpenClose;
 
 public class CafeRequest {
@@ -10,7 +12,7 @@ public class CafeRequest {
 	private int rate;
 	
 	private int countRate;
-
+	
 	private String name;
 
 	private String photoUrl;
@@ -26,7 +28,7 @@ public class CafeRequest {
 	private String type;
 
 	private String phone;
-
+	
 	private String email;
 
 	private OpenClose open;
@@ -40,7 +42,6 @@ public class CafeRequest {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	
 
 	public int getRate() {

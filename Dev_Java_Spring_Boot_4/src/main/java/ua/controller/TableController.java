@@ -1,7 +1,8 @@
 package ua.controller;
 
 
-import java.util.Iterator;
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class TableController {
   
   private final OrderService orderService;
   
+  
   @Autowired
   public TableController(TableService service,OrderService orderService) {
     this.service = service;
@@ -50,21 +52,22 @@ public class TableController {
   @GetMapping("/addtable/{id}/delete/{tableId}")
   public String delete(@PathVariable Integer id,@PathVariable Integer tableId) {
 	  
-	  /*List<Order> order=orderService.findAllOrderByTableId(tableId);
-	 if(order!=null){
-		 Iterator<Order> iter=order.iterator();
-	    	while(iter.hasNext()){
-	    		Order tmp=iter.next();
-	    		orderService.delete(tmp.getId());
-	    	}
-	 }*/
+	  List<Order> orders=orderService.findAllOrderByTableId(tableId);
+	  for (Order order2 : orders) {
+		  orderService.delete(order2.getId());
+	  }
 	 service.delete(tableId);
     return "redirect:/profile/cafe/addtable/{id}";
   }
   
   @PostMapping("/addtable/{id}")
-  public String save(@ModelAttribute("_table") TableRequest request,  SessionStatus status, @PathVariable Integer id) {
-    request.setIsFree(true);
+  public String save(@ModelAttribute("_table") TableRequest request,Model model,  SessionStatus status, @PathVariable Integer id) {
+	  if(request.getNumber()==null||request.getCountOfPeople()==null){
+		  if(request.getNumber()==null)model.addAttribute("emptyNumber",true);
+		  if(request.getCountOfPeople()==null)model.addAttribute("emptyChairs",true);
+		  return show(model,id);
+	  }
+	  request.setIsFree(true);
     request.setUser(null);
     request.setUserPhone(null);
     request.setTimeReserv(service.findOneOpenClose(1));
@@ -88,7 +91,12 @@ public class TableController {
   } 
   
   @PostMapping("/addtable/{id}/reserve/{tableId}")
-  public String reserveSave(@ModelAttribute("_table") TableRequest request, @PathVariable Integer id, @PathVariable Integer tableId, Model model) {
+  public String reserveSave(@ModelAttribute("_table")  TableRequest request,Model model, @PathVariable Integer id, @PathVariable Integer tableId) {
+	  if(request.getUser().isEmpty()||request.getUserPhone().isEmpty()){
+		  if(request.getUser().isEmpty())model.addAttribute("emptyName",true);
+		  if(request.getUserPhone().isEmpty())model.addAttribute("emptyPhone",true);
+		  return reserve(id,tableId,model);
+	  }
 	  request.setId(tableId);
   request.setIsFree(false);
   System.out.println(request.getId());

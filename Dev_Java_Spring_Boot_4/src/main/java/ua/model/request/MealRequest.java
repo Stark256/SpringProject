@@ -3,6 +3,10 @@ package ua.model.request;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import ua.entity.Cafe;
 import ua.entity.Cuisine;
 import ua.entity.Ingredient;
@@ -11,20 +15,26 @@ public class MealRequest {
 
 	private Integer id;
 	
+	@NotBlank(message="Це поле має бути заповненим")
+	@Pattern(regexp = "^[A-Z][a-zA-Z0-9]+| *$", message="Назва має починатись з великої букви")
 	private String title;
 	
 	private String description;
 	
+	@NotBlank(message="Це поле має бути заповненим")
 	private String price;
 	
 	private String photoUrl;
 	
 	private int version;
 	
+	@NotBlank(message="Це поле має бути заповненим")
 	private Cuisine cuisine;
 	
+	@NotBlank(message="Це поле має бути заповненим")
 	private String weight;
 	
+	@NotBlank(message="Це поле має бути заповненим")
 	private List<Ingredient> ingredients=new ArrayList<>();
 	
 	private Cafe cafe;

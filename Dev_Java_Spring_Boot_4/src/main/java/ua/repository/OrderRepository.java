@@ -24,7 +24,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	@Query("SELECT m.title FROM Meal m JOIN m.orders o WHERE o.id=?1")
 	List<String> findAllMealsByOrderId(Integer id);
 	
-	@Query("SELECT new ua.model.view.OrderView(o.id, t.number,o.status,t.id) FROM Order o JOIN o.table t WHERE t.cafe.id=?1")
+	@Query("SELECT new ua.model.view.OrderView(o.id, t.number,o.status,t.id) FROM Order o JOIN o.table t  WHERE t.cafe.id=?1 ORDER BY o.status")
 	List<OrderView> findAllOrdersByCafeId(Integer id);
 	
 	@Query("SELECT t FROM Table t WHERE t.id=?1")
@@ -32,8 +32,6 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	
 	@Query("SELECT o FROM Order o WHERE o.table.id=?1")
 	List<Order> findAllOrderByTableId(Integer id);
-	
-
 	
 	
 }

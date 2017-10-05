@@ -33,4 +33,7 @@ public interface CafeRepository extends JpaNameRepository<Cafe>{
 	
 	@Query("SELECT cc FROM CafeComment cc WHERE cc.cafe.id=?1")
 	List<CafeComment> findAllComentByCafeId(Integer id);
+	
+	@Query("SELECT c FROM Cafe c WHERE c.open.id=?1 OR c.close.id=?1")
+	List<Cafe> findAllCafeByTimeId(Integer id);
 }

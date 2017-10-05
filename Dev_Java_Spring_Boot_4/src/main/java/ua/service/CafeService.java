@@ -34,4 +34,6 @@ public interface CafeService {
 	User findOneUserByEmail(String email);
 	
 	void saveRate(Integer rate,Integer id);
+	
+	List<Cafe> findAllCafeByTimeId(Integer id);
 }

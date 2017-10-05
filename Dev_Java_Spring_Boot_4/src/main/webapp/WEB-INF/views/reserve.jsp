@@ -18,12 +18,26 @@
     <div class="row">
       <div class="col-12">
         <form:form action="/profile/cafe/addtable/${cafeId}/reserve/${_table.id}" method="POST" modelAttribute="_table">
+          <c:if test="${emptyName}">
+				<div class="row">
+					<div class="col-10 ml-auto">
+							<span class="text-danger">Це поле має бути заповненим</span>
+					</div>
+				</div>
+			</c:if>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="user">Name :</label>
             <div class="col-10">
               <form:input class="form-control" id="user" path="user" />
             </div>
           </div>
+           <c:if test="${emptyPhone}">
+				<div class="row">
+					<div class="col-10 ml-auto">
+							<span class="text-danger">Це поле має бути заповненим</span>
+					</div>
+				</div>
+			</c:if>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="userPhone">Phone :</label>
             <div class="col-10">

@@ -44,7 +44,12 @@ public class ClientTableController {
 	  
 	  @PostMapping("/addtable/{id}/client/{tableId}")
 	  public String reserveSaveClient(@ModelAttribute("_table") TableRequest request, @PathVariable Integer id, @PathVariable Integer tableId, Model model) {
-	  request.setId(tableId);
+		  if(request.getUser().isEmpty()||request.getUserPhone().isEmpty()){
+			  if(request.getUser().isEmpty())model.addAttribute("emptyName",true);
+			  if(request.getUserPhone().isEmpty())model.addAttribute("emptyPhone",true);
+			  return reserveClient(id,tableId,model);
+		  }
+		  request.setId(tableId);
 	  request.setIsFree(false);
 	  System.out.println(request.getId());
 	  service.saveReserv(request);

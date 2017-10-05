@@ -15,8 +15,15 @@
 		<div class="row">
 			<div class="col-12">
 				<form:form action="/admin/time" method="POST" modelAttribute="time">
+				<c:if test="${notUnique}">
+					<div class="row">
+						<div class="col-10 ml-auto">
+							<span class="text-danger">Time already exists</span>
+						</div>
+					</div>
+				</c:if>
 					<div class="form-group row">
-						<label class="col-2 col-form-label" for="time">Hour:</label>
+						<label class="col-2 col-form-label" for="time">Time:</label>
 						<div class="col-5">
 							<form:input class="form-control" id="time" path="time"/>
 						</div>

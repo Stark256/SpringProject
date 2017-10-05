@@ -20,6 +20,9 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
 	@Query("SELECT new ua.model.view.MealView(m.id, m.title, m.description, m.price, m.photoUrl, m.version, c.name, m.weight,cafe.name) FROM Meal m JOIN m.cuisine c LEFT JOIN m.cafe cafe WHERE m.cafe.id=?1")
 	List<MealView> findAllMealByCafeId(Integer id);
 	
+	@Query("SELECT m FROM Meal m WHERE m.cafe.id=?1")
+	List<Meal> findAllMealsByCafeId(Integer id);
+	
 	@Query("SELECT i.name FROM Ingredient i JOIN i.meals m WHERE m.id=?1")
 	List<String> findAllIngredientsByMealId(Integer id);
 	
@@ -40,4 +43,7 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
 	
 	@Query("SELECT m FROM Meal m ")
 	List<Meal> findAllView();
+	
+	@Query("SELECT m FROM Meal m WHERE m.cuisine.id=?1")
+	List<Meal> findMealsByCuisineId(Integer id);
 }

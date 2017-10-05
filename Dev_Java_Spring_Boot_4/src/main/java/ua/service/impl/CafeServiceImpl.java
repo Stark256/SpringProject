@@ -44,8 +44,8 @@ public class CafeServiceImpl   implements CafeService {
 	@Override
 	public void save(CafeRequest request,Principal principal) {
 		Cafe cafe=new Cafe();
-		cafe.setName(request.getName());
 		cafe.setId(request.getId());
+		cafe.setName(request.getName());
 		cafe.setRate(request.getRate());
 		cafe.setCountRate(request.getCountRate());
 		cafe.setShortDescription(request.getShortDescription());
@@ -78,8 +78,8 @@ public class CafeServiceImpl   implements CafeService {
 	public CafeRequest findOne(Integer id) {
 		Cafe cafe=repository.findOne(id);
 		CafeRequest request = new CafeRequest();
-		request.setName(cafe.getName());
 		request.setId(cafe.getId());
+		request.setName(cafe.getName());
 		request.setRate(cafe.getRate());
 		request.setCountRate(cafe.getCountRate());
 		request.setPhotoUrl(cafe.getPhotoUrl());
@@ -105,8 +105,8 @@ public class CafeServiceImpl   implements CafeService {
 	public CafeRequest findOneDesc(Integer id) {
 		Cafe cafe=repository.findOneDesc(id);
 		CafeRequest request = new CafeRequest();
-		request.setName(cafe.getName());
 		request.setId(cafe.getId());
+		request.setName(cafe.getName());
 		request.setRate(cafe.getRate());
 		request.setCountRate(cafe.getCountRate());
 		request.setPhotoUrl(cafe.getPhotoUrl());
@@ -146,6 +146,12 @@ public class CafeServiceImpl   implements CafeService {
 		cafe.setRate(rate);
 		cafe.setCountRate(cafe.getCountRate()+1);
 		repository.save(cafe);
+	}
+
+
+	@Override
+	public List<Cafe> findAllCafeByTimeId(Integer id) {
+		return repository.findAllCafeByTimeId(id);
 	}
 
 

@@ -27,4 +27,7 @@ public interface TableRepository extends JpaRepository<Table,Integer> {
   
   @Query("SELECT op FROM OpenClose op WHERE op.id=?1")
  	OpenClose findOneOpenClose(Integer id);
+  
+  @Query("SELECT t FROM Table t  WHERE t.cafe.id=?1")
+  List<Table> findTablesByCafeId(Integer id);
 }

@@ -21,24 +21,52 @@
 							<form:select path="cafe" items="${cafes}" class="form-control"/>
 						</div>
 					</div>
+					<c:if test="${emptyTitle}">
+						<div class="row">
+							<div class="col-10 ml-auto">
+								<span class="text-danger">This field must be filled</span>
+							</div>
+						</div>
+					</c:if>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="title">Title:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="title" path="title"/>
 						</div>
 					</div>
+					<c:if test="${emptyDesc}">
+						<div class="row">
+							<div class="col-10 ml-auto">
+								<span class="text-danger">This field must be filled</span>
+							</div>
+						</div>
+					</c:if>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="description">Description:</label>
 						<div class="col-10">
 							<form:textarea class="form-control" id="description" path="description" rows="5"/>
 						</div>
 					</div>
+					<c:if test="${emptyPrice}">
+						<div class="row">
+							<div class="col-10 ml-auto">
+								<span class="text-danger">This field must be filled</span>
+							</div>
+						</div>
+					</c:if>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="price">Price:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="price" path="price"/>
 						</div>
 					</div>
+					<c:if test="${emptyWeight}">
+						<div class="row">
+							<div class="col-10 ml-auto">
+								<span class="text-danger">This field must be filled</span>
+							</div>
+						</div>
+					</c:if>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="weight">Weight:</label>
 						<div class="col-10">
@@ -51,6 +79,13 @@
 							<form:select path="cuisine" items="${cuisines}" class="form-control"/>
 						</div>
 					</div>
+					<c:if test="${emptyIngredient}">
+						<div class="row">
+							<div class="col-10 ml-auto">
+								<span class="text-danger">This field must be filled</span>
+							</div>
+						</div>
+					</c:if>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="ingredients">Ingredients:</label>
 						<div class="col-10">

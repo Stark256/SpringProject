@@ -1,33 +1,33 @@
 package ua.model.request;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.NotBlank;
 
 import ua.entity.Cafe;
 import ua.entity.OpenClose;
 
-public class TableRequest {
-
+public class ReservationRequest {
 	private Integer id;
 
-	//@NotBlank(message="Це поле має бути заповненим")
+	@NotBlank(message="Це поле має бути заповненим")
 	private OpenClose timeReserv;
 
-	@NotNull(message="Це поле має бути заповненим")
+	//@NotNull(message="Це поле має бути заповненим")
 	private Integer countOfPeople;
 
 	private boolean isFree;
 
-	//@NotBlank(message="Це поле має бути заповненим")
+	@NotBlank(message="Це поле має бути заповненим")
 	private String user;
 
-	//@NotBlank(message="Це поле має бути заповненим")
-	//@Pattern(regexp = "^(\\+380[0-9]{9})?$", message = "+380XXXXXXXXX")
+	@NotBlank(message="Це поле має бути заповненим")
+	@Pattern(regexp = "^(\\+380[0-9]{9})?$", message = "+380XXXXXXXXX")
 	private String userPhone;
 
 	private Cafe cafe;
 	
-	@NotNull(message="Це поле має бути заповненим")
+	//@NotNull(message="Це поле має бути заповненим")
 	private Integer number;
 
 	public OpenClose getTimeReserv() {
@@ -93,6 +93,5 @@ public class TableRequest {
 	public void setNumber(Integer number) {
 		this.number = number;
 	}
-	
 	
 }

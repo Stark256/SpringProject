@@ -3,6 +3,8 @@ package ua.model.request;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import ua.entity.Meal;
 
 public class OrderRequest {
@@ -10,7 +12,8 @@ public class OrderRequest {
 	private Integer id;
 	
 	private String status;
-
+	
+	@NotBlank(message="Це поле має бути заповненим")
 	private List<Meal> meals = new ArrayList<>();
 	
 	private ua.entity.Table table;

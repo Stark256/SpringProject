@@ -11,10 +11,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="meal")
 public class Meal extends AbstractEntity{
 
+	
 	private String title;
 	
 	@Column(length=1023)

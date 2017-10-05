@@ -18,6 +18,13 @@
     <div class="row">
       <div class="col-12">
         <form:form action="/profile/cafe/addtable/${cafeId}" method="POST" modelAttribute="_table">
+         <c:if test="${emptyNumber}">
+				<div class="row">
+					<div class="col-10 ml-auto">
+							<span class="text-danger">This field must be filled</span>
+					</div>
+				</div>
+			</c:if>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="number">Number :</label>
             <div class="col-10">
@@ -25,6 +32,13 @@
                 path="number" />
             </div>
           </div>
+           <c:if test="${emptyChairs}">
+				<div class="row">
+					<div class="col-10 ml-auto">
+							<span class="text-danger">This field must be filled</span>
+					</div>
+				</div>
+			</c:if>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="countOfPeople">Count of chairs :</label>
             <div class="col-10">

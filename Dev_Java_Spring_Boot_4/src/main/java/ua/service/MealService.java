@@ -25,6 +25,7 @@ public interface MealService {
 	
 	List<Meal> findAllView();
 	
-	
+	List<Meal> findAllMealsByCafeId(Integer id);
 		
+	List<Meal> findMealsByCuisineId(Integer id);
 }

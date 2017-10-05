@@ -2,6 +2,7 @@ package ua.controller;
 
 import java.security.Principal;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ import ua.service.CafeService;
 public class AddCafeController {
 
 	
-private final CafeService service;
+	private final CafeService service;
 	
 	@Autowired
 	public AddCafeController(CafeService service) {
@@ -41,13 +42,24 @@ private final CafeService service;
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("addcafe") CafeRequest request, SessionStatus status,Principal principal) {
+	public String save(@ModelAttribute("addcafe")  CafeRequest request,Model model, SessionStatus status,Principal principal) {
+		if(request.getName().isEmpty()||request.getAddress().isEmpty()||request.getFullDescription().isEmpty()||
+				request.getShortDescription().isEmpty()||request.getPhone().isEmpty()){
+			if(request.getName().isEmpty()) model.addAttribute("emptyName",true);
+			if(request.getAddress().isEmpty())model.addAttribute("emptyAddress",true);
+			if(request.getFullDescription().isEmpty())model.addAttribute("emptyFD",true);
+			if(request.getShortDescription().isEmpty())model.addAttribute("emptySD",true);
+			if(request.getPhone().isEmpty())model.addAttribute("emptyPhone",true);
+			return showForm(model);
+		}
+		
+		
 		service.save(request,principal);
 		return cancel(status);
 	}
 	
 	@GetMapping
-	public String showFrom(Model model) {
+	public String showForm(Model model) {
 		model.addAttribute("times", service.findAllOpenCloses());
 		model.addAttribute("types",service.findAllTypes());
 		return "addcafe";
@@ -56,7 +68,7 @@ private final CafeService service;
 	@GetMapping("/update/{id}")
 	public String update(@PathVariable Integer id, Model model) {
 		model.addAttribute("addcafe", service.findOne(id));
-		return showFrom(model);
+		return showForm(model);
 	}
 	
 }

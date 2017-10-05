@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
+
 @Entity
 @Table(name="open_close")
 public class OpenClose extends AbstractEntity{

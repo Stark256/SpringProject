@@ -1,5 +1,9 @@
 package ua.controller;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -7,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +21,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.entity.Cuisine;
+import ua.entity.Meal;
 import ua.model.filter.SimpleFilter;
 import ua.service.CuisineService;
+import ua.service.MealService;
 
 @Controller
 @RequestMapping("/admin/cuisine")
@@ -26,9 +33,12 @@ public class AdminCuisineController {
 
 	private final CuisineService service;
 	
+	private final MealService mealService;
+	
 	@Autowired
-	public AdminCuisineController(CuisineService service) {
+	public AdminCuisineController(CuisineService service,MealService mealService) {
 		this.service = service;
+		this.mealService=mealService;
 	}
 	
 	@ModelAttribute("cuisine")
@@ -49,12 +59,17 @@ public class AdminCuisineController {
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, @PageableDefault Pageable pageable,@ModelAttribute("filter") SimpleFilter filter) {
+		List<Meal> meals=mealService.findMealsByCuisineId(id);
+		for (Meal meal : meals) {
+			mealService.delete(meal.getId());
+		}
 		service.delete(id);
 		return "redirect:/admin/cuisine"+buildParams(pageable, filter);
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("cuisine") Cuisine cuisine, SessionStatus status, @PageableDefault Pageable pageable,@ModelAttribute("filter") SimpleFilter filter) {
+	public String save(@ModelAttribute("cuisine") @Valid Cuisine cuisine,BindingResult br,Model model, SessionStatus status, @PageableDefault Pageable pageable,@ModelAttribute("filter") SimpleFilter filter) {
+		if(br.hasErrors()) return show(model,pageable,filter);
 		service.save(cuisine);
 		return cancel(status,pageable,filter);
 	}

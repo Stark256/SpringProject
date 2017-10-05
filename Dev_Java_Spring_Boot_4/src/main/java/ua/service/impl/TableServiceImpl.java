@@ -85,6 +85,7 @@ public class TableServiceImpl implements TableService {
     request.setCafe(table.getCafe());
     return request;
   }
+  
 
 @Override
 public List<LocalTime> findAllOpenCloses() {
@@ -94,6 +95,11 @@ public List<LocalTime> findAllOpenCloses() {
 @Override
 public OpenClose findOneOpenClose(Integer id) {
 	return repository.findOneOpenClose(id);
+}
+
+@Override
+public List<Table> findTablesByCafeId(Integer id) {
+	return repository.findTablesByCafeId(id);
 }
 
 

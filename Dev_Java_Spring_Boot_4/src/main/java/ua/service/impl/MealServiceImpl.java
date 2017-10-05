@@ -93,6 +93,16 @@ public class MealServiceImpl implements MealService{
 		return repository.findAllView();
 	}
 
+	@Override
+	public List<Meal> findAllMealsByCafeId(Integer id) {
+		return repository.findAllMealsByCafeId(id);
+	}
+
+	@Override
+	public List<Meal> findMealsByCuisineId(Integer id) {
+		return repository.findMealsByCuisineId(id);
+	}
+
 	
 	
 
