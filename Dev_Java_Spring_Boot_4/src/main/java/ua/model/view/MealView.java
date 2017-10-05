@@ -3,6 +3,9 @@ package ua.model.view;
 import java.math.BigDecimal;
 import java.util.List;
 
+import ua.entity.Cuisine;
+
+
 
 public class MealView {
 
@@ -39,6 +42,21 @@ public class MealView {
 		this.cuisine = cuisine;
 		this.weight = weight;
 		this.cafe=cafe;
+	}
+	
+	public MealView(Integer id, String title, String description, BigDecimal price, String photoUrl, int version,
+			Cuisine cuisine, int weight) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.price = price;
+		this.photoUrl = photoUrl;
+		this.version = version;
+		this.cuisine = cuisine.getName();
+		this.weight = weight;
+	}
+	
+	public MealView() {
 	}
 
 	public String getCafe() {

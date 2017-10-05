@@ -6,7 +6,9 @@ import java.util.regex.Pattern;
 
 import ua.entity.Type;
 
+
 public class CafeFilter {
+
 	private static final Pattern RATE_PATTERN = Pattern.compile("^[0-9]([,.][0-9]{1,2})?|10([,.]0{1,2})?$");
 
 	private static final Pattern TIME_PATTERN = Pattern.compile("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
@@ -24,6 +26,8 @@ public class CafeFilter {
 	private String minClose = "";
 
 	private String maxClose = "";
+	
+	private String search = "";
 	
 
 	public String getMinRate() {
@@ -93,4 +97,13 @@ public class CafeFilter {
 			this.maxClose = maxClose;
 		}
 	}
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
 }

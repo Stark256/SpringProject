@@ -19,7 +19,7 @@ public interface TableRepository extends JpaRepository<Table,Integer> {
   @Query("SELECT c FROM Cafe c WHERE c.id=?1")
   Cafe findCafeById(Integer id);
   
-  @Query("SELECT new ua.model.view.TableView(t.id, t.countOfPeople, t.isFree, t.user, t.userPhone, c.name, op.time,t.number) FROM Table t JOIN t.cafe c JOIN t.timeReserv op WHERE c.id=?1")
+  @Query("SELECT new ua.model.view.TableView(t.id, t.countOfPeople, t.isFree, t.user, t.userPhone, c.name, op.time,t.number) FROM Table t JOIN t.cafe c JOIN t.timeReserv op WHERE c.id=?1 ORDER BY t.isFree DESC")
   List<TableView> findTableViewsByCafeId(Integer id);
 
   @Query("SELECT op.time FROM OpenClose op")

@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import ua.entity.Cafe;
 import ua.entity.OpenClose;
-import ua.service.CafeService;
 import ua.service.OpenCloseService;
 
 @Controller
@@ -27,12 +25,10 @@ public class AdminOpenCloseController {
 	
 private final OpenCloseService service;
 
-private final CafeService cafeService;
 	
 	@Autowired
-	public AdminOpenCloseController(OpenCloseService service,CafeService cafeService) {
+	public AdminOpenCloseController(OpenCloseService service) {
 		this.service=service;
-		this.cafeService=cafeService;
 	}
 	
 	@GetMapping
@@ -48,10 +44,6 @@ private final CafeService cafeService;
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
-		List<Cafe> cafes=cafeService.findAllCafeByTimeId(id);
-		for (Cafe cafe : cafes) {
-			cafeService.delete(cafe.getId());
-		}
 		service.delete(id);
 		return "redirect:/admin/time";
 	}

@@ -7,6 +7,8 @@ package ua.model.request;
 import java.math.BigDecimal;
 import java.time.LocalTime;
 
+import org.springframework.web.multipart.MultipartFile;
+
 
 public class CafeRequest {
 
@@ -35,6 +37,8 @@ public class CafeRequest {
 	private LocalTime open;
 
 	private LocalTime close;
+	
+	private MultipartFile photo;
 
 	public Integer getId() {
 		return id;
@@ -62,6 +66,8 @@ public class CafeRequest {
 		this.name = name;
 	}
 
+	
+	
 	public String getPhotoUrl() {
 		return photoUrl;
 	}
@@ -142,9 +148,17 @@ public class CafeRequest {
 	public void setShortDescription(String shortDescription) {
 		this.shortDescription = shortDescription;
 	}
-	
-	
 
+	public MultipartFile getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
+	}
+	
+	
+	
 	
 
 	

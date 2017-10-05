@@ -16,88 +16,111 @@
 <body>
 <div class="container">
 		<div class="row">
-			<div class="col-12">
-				<form:form action="/yura/allcafe" method="GET" modelAttribute="cafeFilter">
+		<div class="col pt-3">
+				<form:form action="/all/allcafe" method="GET" modelAttribute="cafeFilter">
+					<span class="text-secondary">RATE</span>
 					<div class="form-group row">
-						<div class="col-6">
-							<form:input path="minRate" class="form-control" placeholder="Min rate"/>
+						<div class="col pr-1">
+							<form:input path="minRate" class="form-control form-control-sm" placeholder="Min"/>
 						</div>
-						<div class="col-6">
-							<form:input path="maxRate" class="form-control" placeholder="Max rate"/>
+						<div class="col pl-1">
+							<form:input path="maxRate" class="form-control form-control-sm" placeholder="Max"/>
 						</div>
 					</div>
-					<div class="form-group row">
-						<div class="col-6">
-							<form:input path="minOpen" class="form-control" placeholder="Min open"/>
-						</div>
-						<div class="col-6">
-							<form:input path="maxOpen" class="form-control" placeholder="Max open"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-6">
-							<form:input path="minClose" class="form-control" placeholder="Min close"/>
-						</div>
-						<div class="col-6">
-							<form:input path="maxClose" class="form-control" placeholder="Max close"/>
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-12">
-							<div>
-								<label>Pub <form:checkbox path="types" value="PUB"/></label>
-								<label>Sushy <form:checkbox path="types" value="SUSHY"/></label>
-								<label>Bar <form:checkbox path="types" value="BAR"/></label>
-								<label>Cafe <form:checkbox path="types" value="CAFE"/></label>
-								<label>Restaurant <form:checkbox path="types" value="RESTAURANT"/></label>
-							</div>
+					<span class="text-secondary">TYPE</span>
+					<div class="row">
+						<div class="form-group col-2">
+							<div><label><form:checkbox path="types" value="PUB"/> Pub</label></div>
+						</div>		
+						<div class="form-group col-2">
+							<div><label><form:checkbox path="types" value="SUSHY"/> Sushy</label></div>
+						</div>		
+						<div class="form-group col-2">
+							<div><label><form:checkbox path="types" value="BAR"/> Bar</label></div>
+						</div>		
+						<div class="form-group col-2">
+							<div><label><form:checkbox path="types" value="CAFE"/> Cafe</label></div>
+						</div>		
+						<div class="form-group col-2">
+							<div><label><form:checkbox path="types" value="RESTAURANT"/> Restaurant</label></div>
 						</div>
 					</div>
+					<span class="text-secondary">OPENING TIME</span>
 					<div class="form-group row">
-						<div class="col-12">
-        					<button type="submit" class="btn btn-outline-success btn-sm">Search</button>
-      					</div>
+						<div class="col pr-1">
+							<form:input path="minOpen" class="form-control form-control-sm" placeholder="Min"/>
+						</div>
+						<div class="col pl-1">
+							<form:input path="maxOpen" class="form-control form-control-sm" placeholder="Max"/>
+						</div>
 					</div>
+					<span class="text-secondary">CLOSING TIME</span>
+					<div class="form-group row">
+						<div class="col pr-1">
+							<form:input path="minClose" class="form-control form-control-sm" placeholder="Min"/>
+						</div>
+						<div class="col pl-1">
+							<form:input path="maxClose" class="form-control form-control-sm" placeholder="Max"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success btn-block mt-3">Search</button>
+			    	</div>
 				</form:form>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-3">					
+					<div class="col-12 ">
+							<form:form action="/all/allcafe" method="GET" modelAttribute="cafeFilter">
+								<div class="form-group">
+									<form:input path="search" class="form-control form-control-sm" placeholder="Search"/>
+								</div>
+							</form:form>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<button class="dropdown-toggle btn btn-outline-info btn-sm" type="button" data-toggle="dropdown">Sort</button>
+							<div class="dropdown-menu">
+								<custom:sort innerHtml="Name asc" paramValue="name"/>
+								<custom:sort innerHtml="Name desc" paramValue="name,desc"/>
+								<custom:sort innerHtml="Type asc" paramValue="type"/>
+								<custom:sort innerHtml="Type desc" paramValue="type,desc"/>
+							</div>
+						</div>
+						<div class="col-2 ">
+							<custom:size posibleSizes="1,2,5,10" size="${cafes.size}"/>
+						</div>
+					</div>
+				</div>
+			<div class="col-9">
 				<table class="table table-bordered">
 					<tr>
 						<th class="text-center">Name</th>
 						<th class="text-center">Address</th>
-						<th class="text-center">Full description</th>
 						<th class="text-center">Short description</th>
 						<th class="text-center">Type</th>
-						<th class="text-center">Phone</th>
-						<th class="text-center">Open</th>
-						<th class="text-center">Close</th>
 					</tr>
-					<c:forEach var="cafe" items="${cafes}">
+					<c:forEach var="cafe" items="${cafes.content}">
 						<tr>
 							<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
 							<td>${cafe.address}</td>
-							<td>${cafe.fullDescription}</td>
 							<td>${cafe.shortDescription}</td>
 							<td>${cafe.type}</td>
-							<td>${cafe.phone}</td>
-							<td>${cafe.open}</td>
-							<td>${cafe.close}</td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 		</div>
 		<c:if test="${cafes!=null}">
-		<div class="row">
+		<div class="row mt-3">
 			<div class="col-12 text-center">
 				<custom:pageable page="${cafes}"/>
 			</div>
 		</div>
-		</c:if>
+	</c:if>
 	</div>
 </body>
 </html>

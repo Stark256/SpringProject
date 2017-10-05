@@ -56,7 +56,7 @@
 							<td>${time.time}</td>
 							<td class="text-center">
 								<a href="/admin/time/update/${time.id}" class="btn btn-outline-warning btn-sm">Update</a>
-								<a href="/admin/time/delete/${time.id}" class="btn btn-outline-danger btn-sm">Delete</a>
+								<!-- <a href="/admin/time/delete/${time.id}" class="btn btn-outline-danger btn-sm">Delete</a> -->
 							</td>
 						</tr>
 					</c:forEach>

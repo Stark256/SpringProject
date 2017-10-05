@@ -120,7 +120,7 @@ label.star:before {
 						<tr>
 					<c:forEach var="meal" items="${meals}">
 						<tr>
-							<td>${meal.title}</td>
+							<td><a href="/mealdesc/${meal.id}">${meal.title}</a></td>
 							<td>${meal.cuisine.name}</td>
 							<td>${meal.weight}</td>
 							<td>${meal.price}</td>

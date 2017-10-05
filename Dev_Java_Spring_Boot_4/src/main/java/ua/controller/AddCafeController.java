@@ -16,6 +16,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import ua.model.request.CafeRequest;
 import ua.service.CafeService;
+import ua.service.FileWriter;
 
 @Controller
 @RequestMapping("/addcafe")
@@ -24,6 +25,9 @@ public class AddCafeController {
 
 	
 	private final CafeService service;
+	
+	@Autowired
+	private FileWriter writer;
 	
 	@Autowired
 	public AddCafeController(CafeService service) {
@@ -52,7 +56,7 @@ public class AddCafeController {
 			if(request.getPhone().isEmpty())model.addAttribute("emptyPhone",true);
 			return showForm(model);
 		}
-		service.save(request,principal);
+		service.save(request,principal,writer.write(request.getPhoto()));
 		return cancel(status);
 	}
 	

@@ -11,29 +11,43 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ua.model.filter.CafeFilter;
+import ua.model.filter.MealFilter;
 import ua.repository.CafeViewRepository;
-import ua.service.CafeService;
-import ua.service.MealService;
+import ua.repository.MealViewRepository;
+import ua.service.CuisineService;
+import ua.service.IngredientService;
 
 @Controller
-@RequestMapping("/yura")
+@RequestMapping("/all")
 public class SeeAllController {
 	
 	private final CafeViewRepository repository;
 
 //private final CafeService cafeService;
 
-private final MealService mealService;
+private final MealViewRepository mealRep;
+
+
+private final CuisineService cuisineService;
+
+private final IngredientService service;
 	
 	@Autowired
-	public SeeAllController(CafeViewRepository repository,MealService mealService) {
+	public SeeAllController(MealViewRepository mealRep,CafeViewRepository repository,IngredientService service,CuisineService cuisineService) {
 		this.repository = repository;
-		this.mealService = mealService;
+		this.mealRep = mealRep;
+		this.service = service;
+		this.cuisineService = cuisineService;
 	}
 	
 	@ModelAttribute("cafeFilter")
 	public CafeFilter getFilter(){
 		return new CafeFilter();
+	}
+	
+	@ModelAttribute("mealFilter")
+	public MealFilter getFilterMeal(){
+		return new MealFilter();
 	}
 	
 	@GetMapping("/allcafe")
@@ -43,9 +57,10 @@ private final MealService mealService;
 	}
 	
 	@GetMapping("/allmeal")
-	public String showAllMeal(Model model) {
-		model.addAttribute("meals", mealService.findAllView());
-		model.addAttribute("ingredients", mealService.findAllIngredients());
+	public String showAllMeal(Model model,@ModelAttribute("mealFilter") MealFilter filter, @PageableDefault Pageable pageable) {
+		model.addAttribute("meals", mealRep.findAll(filter, pageable));
+		model.addAttribute("cuisines", cuisineService.findAll());
+		model.addAttribute("ingredients", service.findAll());
 		return "allmeal";
 	}
 }

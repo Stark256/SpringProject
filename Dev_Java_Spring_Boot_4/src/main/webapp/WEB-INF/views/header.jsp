@@ -45,8 +45,8 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <div class="navbar-nav">
           <a class="nav-item nav-link text-white" href="/"><i class="fa fa-home" aria-hidden="true"> Main Page</i></a>
-          <a class="nav-item nav-link text-white" href="/yura/allcafe"><i class="" aria-hidden="true">All Cafe</i> </a>
-          <a class="nav-item nav-link text-white" href="/yura/allmeal"><i class="" aria-hidden="true">All Meal</i> </a>
+          <a class="nav-item nav-link text-white" href="/all/allcafe"><i class="" aria-hidden="true">All Cafe</i> </a>
+          <a class="nav-item nav-link text-white" href="/all/allmeal"><i class="" aria-hidden="true">All Meal</i> </a>
 
           <sec:authorize access="hasRole('ROLE_CAFE')">
             <a class="nav-item nav-link text-white" href="/profile"><i

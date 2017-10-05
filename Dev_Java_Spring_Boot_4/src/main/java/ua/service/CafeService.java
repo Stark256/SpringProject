@@ -19,7 +19,7 @@ public interface CafeService {
 
 	List<CafeView> findAllViews();
 
-	void save(CafeRequest request,Principal principal);
+	void save(CafeRequest request,Principal principal,String photo);
 
 	CafeRequest findOne(Integer id);
 	

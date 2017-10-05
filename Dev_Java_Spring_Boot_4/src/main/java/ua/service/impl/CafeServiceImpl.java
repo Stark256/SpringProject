@@ -42,15 +42,14 @@ public class CafeServiceImpl   implements CafeService {
 
 
 	@Override
-	public void save(CafeRequest request,Principal principal) {
+	public void save(CafeRequest request,Principal principal,String photo) {
 		Cafe cafe=new Cafe();
 		cafe.setId(request.getId());
 		cafe.setName(request.getName());
 		cafe.setRate(request.getRate());
 		cafe.setShortDescription(request.getShortDescription());
-		cafe.setPhotoUrl(request.getPhotoUrl());
 		cafe.setAddress(request.getAddress());
-		cafe.setVersion(request.getVersion());
+		cafe.setVersion(request.getPhotoUrl() != null && request.getPhotoUrl().equals(photo) ? request.getVersion() + 1 : 0);
 		cafe.setFullDescription(request.getFullDescription());
 		cafe.setType(Type.valueOf(request.getType()));
 		if(request.getPhone().length()<14)
@@ -58,6 +57,7 @@ public class CafeServiceImpl   implements CafeService {
 		cafe.setOpen(repository.findByTime(request.getOpen()));
 		cafe.setClose(repository.findByTime(request.getClose()));
 		cafe.setUser(repository.findOneUserByEmail(principal.getName()));
+		cafe.setPhotoUrl(photo);
 		repository.save(cafe);
 	}
 

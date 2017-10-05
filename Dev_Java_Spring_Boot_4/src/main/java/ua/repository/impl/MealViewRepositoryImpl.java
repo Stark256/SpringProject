@@ -15,37 +15,41 @@ import org.springframework.data.jpa.repository.query.QueryUtils;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
-import ua.com.model.bilder.CafePredicateBuilder;
-import ua.entity.Cafe;
-import ua.entity.Cafe_;
-import ua.model.filter.CafeFilter;
-import ua.model.view.CafeIndexView;
-import ua.repository.CafeViewRepository;
+import ua.com.model.bilder.MealPredicateBuilder;
+import ua.entity.Meal;
+import ua.entity.Meal_;
+import ua.model.filter.MealFilter;
+import ua.model.view.MealView;
+import ua.repository.MealViewRepository;
+
 
 @Repository
-public class CafeViewRepositoryImpl implements CafeViewRepository {
+public class MealViewRepositoryImpl implements MealViewRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Override
-	public Page<CafeIndexView> findAll(CafeFilter filter, Pageable pageable) {
+	public Page<MealView> findAll(MealFilter filter, Pageable pageable) {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<CafeIndexView> criteriaQuery = criteriaBuilder.createQuery(CafeIndexView.class);
-		Root<Cafe> root = criteriaQuery.from(Cafe.class);
-		criteriaQuery.multiselect(root.get(Cafe_.id), root.get(Cafe_.rate), root.get(Cafe_.name), root.get(Cafe_.photoUrl), root.get(Cafe_.version), root.get(Cafe_.address), root.get(Cafe_.shortDescription), root.get(Cafe_.type));
-		CafePredicateBuilder builder = new CafePredicateBuilder(filter, criteriaBuilder, root);
+		CriteriaQuery<MealView> criteriaQuery = criteriaBuilder.createQuery(MealView.class);
+		Root<Meal> root = criteriaQuery.from(Meal.class);
+		criteriaQuery.multiselect(root.get(Meal_.id), root.get(Meal_.title), root.get(Meal_.description),
+				root.get(Meal_.price), root.get(Meal_.photoUrl), root.get(Meal_.version), root.get(Meal_.cuisine),
+				root.get(Meal_.weight));
+		MealPredicateBuilder builder = new MealPredicateBuilder(filter, criteriaBuilder, root);
 		Predicate predicate = builder.toPredicate();
 		if (predicate != null) {
 			criteriaQuery.where(predicate);
 		}
 		criteriaQuery.orderBy(QueryUtils.toOrders(pageable.getSort(), root, criteriaBuilder));
-		criteriaQuery.orderBy(criteriaBuilder.desc(root.get(Cafe_.rate)));
-		List<CafeIndexView> views = entityManager.createQuery(criteriaQuery).setFirstResult(pageable.getPageNumber()).setMaxResults(pageable.getPageSize()).getResultList();
+		criteriaQuery.orderBy(criteriaBuilder.asc(root.get(Meal_.title)));
+		criteriaQuery.distinct(true);
+		List<MealView> views = entityManager.createQuery(criteriaQuery).setFirstResult(pageable.getPageNumber()).setMaxResults(pageable.getPageSize()).getResultList();
 		CriteriaQuery<Long> criteriaQueryCount = criteriaBuilder.createQuery(Long.class);
-		Root<Cafe> rootCount = criteriaQueryCount.from(Cafe.class);
+		Root<Meal> rootCount = criteriaQueryCount.from(Meal.class);
 		criteriaQueryCount.select(criteriaBuilder.count(rootCount));
-		CafePredicateBuilder builderCount = new CafePredicateBuilder(filter, criteriaBuilder, rootCount);
+		MealPredicateBuilder builderCount = new MealPredicateBuilder(filter, criteriaBuilder, rootCount);
 		Predicate predicateCount = builderCount.toPredicate();
 		if (predicateCount != null) {
 			criteriaQueryCount.where(predicateCount);
