@@ -75,7 +75,7 @@ label.star:before {
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-12">${cafe.open.time}-${cafe.close.time}</div>
+								<div class="col-12">${cafe.open}-${cafe.close}</div>
 							</div>
 							<div class="row">
 								<div class="col-12">${cafe.fullDescription}</div>

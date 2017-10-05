@@ -47,7 +47,6 @@ public class CafeServiceImpl   implements CafeService {
 		cafe.setId(request.getId());
 		cafe.setName(request.getName());
 		cafe.setRate(request.getRate());
-		cafe.setCountRate(request.getCountRate());
 		cafe.setShortDescription(request.getShortDescription());
 		cafe.setPhotoUrl(request.getPhotoUrl());
 		cafe.setAddress(request.getAddress());
@@ -56,8 +55,8 @@ public class CafeServiceImpl   implements CafeService {
 		cafe.setType(Type.valueOf(request.getType()));
 		if(request.getPhone().length()<14)
 		cafe.setPhone(request.getPhone());
-		cafe.setOpen(request.getOpen());
-		cafe.setClose(request.getClose());
+		cafe.setOpen(repository.findByTime(request.getOpen()));
+		cafe.setClose(repository.findByTime(request.getClose()));
 		cafe.setUser(repository.findOneUserByEmail(principal.getName()));
 		repository.save(cafe);
 	}
@@ -81,7 +80,6 @@ public class CafeServiceImpl   implements CafeService {
 		request.setId(cafe.getId());
 		request.setName(cafe.getName());
 		request.setRate(cafe.getRate());
-		request.setCountRate(cafe.getCountRate());
 		request.setPhotoUrl(cafe.getPhotoUrl());
 		request.setAddress(cafe.getAddress());
 		request.setVersion(cafe.getVersion());
@@ -89,8 +87,8 @@ public class CafeServiceImpl   implements CafeService {
 		request.setShortDescription(cafe.getShortDescription());
 		request.setType(String.valueOf(cafe.getType()));
 		request.setPhone(cafe.getPhone());
-		request.setOpen(cafe.getOpen());
-		request.setClose(cafe.getClose());
+		request.setOpen(cafe.getOpen().getTime());
+		request.setClose(cafe.getClose().getTime());
 		return request;
 	}
 
@@ -108,7 +106,6 @@ public class CafeServiceImpl   implements CafeService {
 		request.setId(cafe.getId());
 		request.setName(cafe.getName());
 		request.setRate(cafe.getRate());
-		request.setCountRate(cafe.getCountRate());
 		request.setPhotoUrl(cafe.getPhotoUrl());
 		request.setAddress(cafe.getAddress());
 		request.setVersion(cafe.getVersion());
@@ -116,8 +113,8 @@ public class CafeServiceImpl   implements CafeService {
 		request.setShortDescription(cafe.getShortDescription());
 		request.setType(String.valueOf(cafe.getType()));
 		request.setPhone(cafe.getPhone());
-		request.setOpen(cafe.getOpen());
-		request.setClose(cafe.getClose());
+		request.setOpen(cafe.getOpen().getTime());
+		request.setClose(cafe.getClose().getTime());
 		return request;
 	}
 
@@ -142,10 +139,9 @@ public class CafeServiceImpl   implements CafeService {
 
 	@Override
 	public void saveRate(Integer rate,Integer id) {
-		Cafe cafe=repository.findOne(id);
+	/*	Cafe cafe=repository.findOne(id);
 		cafe.setRate(rate);
-		cafe.setCountRate(cafe.getCountRate()+1);
-		repository.save(cafe);
+		repository.save(cafe);*/
 	}
 
 

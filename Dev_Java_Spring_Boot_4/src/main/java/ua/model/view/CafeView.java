@@ -1,5 +1,6 @@
 package ua.model.view;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -9,9 +10,7 @@ public class CafeView {
 
 	private Integer id;
 	
-	private int rate;
-	
-	private int countRate;
+	private BigDecimal rate;
 	
 	private String name;
 	
@@ -33,9 +32,8 @@ public class CafeView {
 	
 	private String close;
 	
-	public CafeView(Integer id, int rate,int countRate, String name, String photoUrl, int version, String address,String fullDescription,String shortDescription, Type type, String phone,  LocalTime open, LocalTime close) {
+	public CafeView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address,String fullDescription,String shortDescription, Type type, String phone,  LocalTime open, LocalTime close) {
 		this.id = id;
-		this.countRate = countRate;
 		this.rate = rate;
 		this.name = name;
 		this.photoUrl = photoUrl;
@@ -72,20 +70,14 @@ public class CafeView {
 		this.id = id;
 	}
 
-	public int getRate() {
+	
+	
+	public BigDecimal getRate() {
 		return rate;
 	}
 
-	public void setRate(int rate) {
+	public void setRate(BigDecimal rate) {
 		this.rate = rate;
-	}
-
-	public int getCountRate() {
-		return countRate;
-	}
-
-	public void setCountRate(int countRate) {
-		this.countRate = countRate;
 	}
 
 	public String getName() {

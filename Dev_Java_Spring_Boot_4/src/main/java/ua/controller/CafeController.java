@@ -33,9 +33,12 @@ public class CafeController {
 		this.serviceMeal = serviceMeal;
 	}
 	
+	
+	
 	@GetMapping
 	public String show(Model model,Principal principal) {
 		model.addAttribute("cafes",service.findAllCafeByUserEmail(principal.getName()));
+		
 		return "cafe";
 	}
 

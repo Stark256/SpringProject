@@ -22,6 +22,13 @@
 						</div>
 					</div>
 				</c:if>
+				<c:if test="${emptyTime}">
+					<div class="row">
+						<div class="col-10 ml-auto">
+							<span class="text-danger">This field must be filled</span>
+						</div>
+					</div>
+				</c:if>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="time">Time:</label>
 						<div class="col-5">

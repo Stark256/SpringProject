@@ -3,15 +3,16 @@ package ua.model.request;
 
 
 
-import ua.entity.OpenClose;
+
+import java.math.BigDecimal;
+import java.time.LocalTime;
+
 
 public class CafeRequest {
 
 	private Integer id;
 
-	private int rate;
-	
-	private int countRate;
+	private BigDecimal rate;
 	
 	private String name;
 
@@ -31,9 +32,9 @@ public class CafeRequest {
 	
 	private String email;
 
-	private OpenClose open;
+	private LocalTime open;
 
-	private OpenClose close;
+	private LocalTime close;
 
 	public Integer getId() {
 		return id;
@@ -43,21 +44,14 @@ public class CafeRequest {
 		this.id = id;
 	}
 	
-
-	public int getRate() {
+	
+	
+	public BigDecimal getRate() {
 		return rate;
 	}
 
-	public void setRate(int rate) {
+	public void setRate(BigDecimal rate) {
 		this.rate = rate;
-	}
-
-	public int getCountRate() {
-		return countRate;
-	}
-
-	public void setCountRate(int countRate) {
-		this.countRate = countRate;
 	}
 
 	public String getName() {
@@ -124,19 +118,20 @@ public class CafeRequest {
 		this.email = email;
 	}
 
-	public OpenClose getOpen() {
+	
+	public LocalTime getOpen() {
 		return open;
 	}
 
-	public void setOpen(OpenClose open) {
+	public void setOpen(LocalTime open) {
 		this.open = open;
 	}
 
-	public OpenClose getClose() {
+	public LocalTime getClose() {
 		return close;
 	}
 
-	public void setClose(OpenClose close) {
+	public void setClose(LocalTime close) {
 		this.close = close;
 	}
 

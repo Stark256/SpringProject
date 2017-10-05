@@ -52,8 +52,6 @@ public class AddCafeController {
 			if(request.getPhone().isEmpty())model.addAttribute("emptyPhone",true);
 			return showForm(model);
 		}
-		
-		
 		service.save(request,principal);
 		return cancel(status);
 	}
