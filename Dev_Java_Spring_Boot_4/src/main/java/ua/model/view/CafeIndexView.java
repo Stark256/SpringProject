@@ -22,6 +22,8 @@ public class CafeIndexView {
 	private String shortDescription;
 	
 	private String type;
+	
+	
 
 	public CafeIndexView(Integer id, BigDecimal rate, String name, String photoUrl, int version, String address, String shortDescription, Type type) {
 		this.id = id;
@@ -33,6 +35,12 @@ public class CafeIndexView {
 		this.shortDescription = shortDescription;
 		this.type = type.name();
 	}
+
+		
+	
+
+
+
 
 	public Integer getId() {
 		return id;

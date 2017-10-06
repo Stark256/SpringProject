@@ -46,21 +46,21 @@
 						</div>
 					</div>
 					<span class="text-secondary">OPENING TIME</span>
-					<div class="form-group row">
+					 <div class="form-group row">
 						<div class="col pr-1">
-							<form:input path="minOpen" class="form-control form-control-sm" placeholder="Min"/>
+							<form:input path="minOpen" class="form-control form-control-sm" placeholder="Min HH:mm"/>
 						</div>
 						<div class="col pl-1">
-							<form:input path="maxOpen" class="form-control form-control-sm" placeholder="Max"/>
+							<form:input path="maxOpen" class="form-control form-control-sm" placeholder="Max HH:mm"/>
 						</div>
 					</div>
 					<span class="text-secondary">CLOSING TIME</span>
 					<div class="form-group row">
 						<div class="col pr-1">
-							<form:input path="minClose" class="form-control form-control-sm" placeholder="Min"/>
+							<form:input path="minClose" class="form-control form-control-sm" placeholder="Min HH:mm"/>
 						</div>
 						<div class="col pl-1">
-							<form:input path="maxClose" class="form-control form-control-sm" placeholder="Max"/>
+							<form:input path="maxClose" class="form-control form-control-sm" placeholder="Max HH:mm"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -72,13 +72,15 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-3">					
+			<div class="col-3">	
+			<div class="row">				
 					<div class="col-12 ">
 							<form:form action="/all/allcafe" method="GET" modelAttribute="cafeFilter">
 								<div class="form-group">
 									<form:input path="search" class="form-control form-control-sm" placeholder="Search"/>
 								</div>
 							</form:form>
+					</div>
 					</div>
 					<div class="row">
 						<div class="col-6">

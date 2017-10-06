@@ -13,6 +13,7 @@
 </head>
 <body>
 	<div class="container">
+	<div class="row">
 		<div class="col pt-3">
 				<form:form action="/all/allmeal" method="GET" modelAttribute="mealFilter">
 					<span class="text-secondary">PRICE</span>
@@ -44,17 +45,18 @@
 				    
 				</form:form>
 			</div>
+			</div>
 		<div class="row">
 			<div class="col-3">
 				<div class="row">
 					<div class="col-12 ">
-				<form:form action="/all/allmeal" method="GET" modelAttribute="mealFilter">
-					<div class="form-group">
-						<form:input path="search" class="form-control form-control-sm" placeholder="Search"/>
+						<form:form action="/all/allmeal" method="GET" modelAttribute="mealFilter">
+							<div class="form-group">
+								<form:input path="search" class="form-control form-control-sm" placeholder="Search"/>
+							</div>
+						</form:form>
 					</div>
-				</form:form>
-					</div>
-					</div>
+				</div>
 				<div class="row">
 					<div class="col-6 ">
 						<button class="dropdown-toggle btn btn-outline-secondary btn-sm" type="button" data-toggle="dropdown">Sort</button>

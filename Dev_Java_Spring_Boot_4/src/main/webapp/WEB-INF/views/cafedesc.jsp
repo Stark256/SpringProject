@@ -34,6 +34,8 @@ border-radius:18px;
 						<td>${cafe.shortDescription}</td>
 						<td>${cafe.rate}</td>
 						<td>${cafe.type}</td>
+						<td>${cafe.open}</td>
+						<td>${cafe.close}</td>
 					</tr>
 				</table>
 				
