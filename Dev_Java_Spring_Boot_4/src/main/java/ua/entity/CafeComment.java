@@ -1,11 +1,15 @@
 package ua.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +20,14 @@ public class CafeComment extends AbstractEntity{
 	private String comment;
 	
 	private String user;
+	
+	private BigDecimal rate;
+	
+	@ManyToOne
+	private CafeComment parentComment;
+	
+	@OneToMany(mappedBy="parentComment")
+	private List<CafeComment> childComment = new ArrayList<CafeComment>();
 	
 	private LocalDateTime time;
 	
@@ -54,6 +66,31 @@ public class CafeComment extends AbstractEntity{
 	public void setTime(LocalDateTime time) {
 		this.time = time;
 	}
+
+	public BigDecimal getRate() {
+		return rate;
+	}
+
+	public void setRate(BigDecimal rate) {
+		this.rate = rate;
+	}
+
+	public CafeComment getParentComment() {
+		return parentComment;
+	}
+
+	public void setParentComment(CafeComment parentComment) {
+		this.parentComment = parentComment;
+	}
+
+	public List<CafeComment> getChildComment() {
+		return childComment;
+	}
+
+	public void setChildComment(List<CafeComment> childComment) {
+		this.childComment = childComment;
+	}
+	
 	
 	
 }

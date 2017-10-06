@@ -1,5 +1,6 @@
 package ua.model.view;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -11,13 +12,30 @@ public class CafeCommentView {
 	private String user;
 	
 	private String time;
+	
+	private BigDecimal rate;
 
-	public CafeCommentView(String comment, String user, LocalDateTime time) {
+	public CafeCommentView(String comment, String user, LocalDateTime time,BigDecimal rate) {
 		super();
 		this.comment = comment;
 		this.user = user;
 		this.time = time.format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy"));
+		this.rate=rate;
 	}
+	
+	
+
+	public BigDecimal getRate() {
+		return rate;
+	}
+
+
+
+	public void setRate(BigDecimal rate) {
+		this.rate = rate;
+	}
+
+
 
 	public String getComment() {
 		return comment;

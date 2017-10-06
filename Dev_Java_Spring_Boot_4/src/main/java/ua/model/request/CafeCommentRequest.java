@@ -1,5 +1,7 @@
 package ua.model.request;
 
+import java.math.BigDecimal;
+
 import ua.entity.Cafe;
 
 
@@ -11,6 +13,7 @@ public class CafeCommentRequest {
 	
 	private String user;
 	
+	private BigDecimal rate;
 	
 	private Cafe cafe;
 
@@ -48,6 +51,14 @@ public class CafeCommentRequest {
 		this.cafe = cafe;
 	}
 
+	public BigDecimal getRate() {
+		return rate;
+	}
 
+	public void setRate(BigDecimal rate) {
+		this.rate = rate;
+	}
+
+	
 	
 }

@@ -40,9 +40,15 @@ public class CafeCommentServiceImpl  implements CafeCommentService{
 		CafeComment comment = new CafeComment();
 		comment.setComment(commentRequest.getComment());
 		comment.setUser(commentRequest.getUser());
+		comment.setRate(commentRequest.getRate());
 		comment.setTime(LocalDateTime.now());
 		comment.setCafe(cafeRepository.findOne(id));
 		repository.save(comment);		
+	}
+
+	@Override
+	public List<CafeComment> findCommentByCafeId(Integer id) {
+		return repository.findCommentByCafeId(id);
 	}
 
 	

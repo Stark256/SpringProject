@@ -101,6 +101,7 @@
 						<th class="text-center">Photo</th>
 						<th class="text-center">Name</th>
 						<th class="text-center">Address</th>
+						<th class="text-center">Rate</th>
 						<th class="text-center">Short description</th>
 						<th class="text-center">Type</th>
 					</tr>
@@ -112,6 +113,7 @@
 							<td><img src="/img/${cafe.photoUrl}?version=${cafe.version}" width="150" height="100" class="img-fluid"></td>
 							<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
 							<td>${cafe.address}</td>
+							<td>${cafe.rate}</td>
 							<td>${cafe.shortDescription}</td>
 							<td>${cafe.type}</td>
 						</tr>

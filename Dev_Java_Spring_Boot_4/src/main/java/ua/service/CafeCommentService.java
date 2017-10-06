@@ -2,6 +2,7 @@ package ua.service;
 
 import java.util.List;
 
+import ua.entity.CafeComment;
 import ua.model.request.CafeCommentRequest;
 import ua.model.view.CafeCommentView;
 
@@ -12,6 +13,6 @@ public interface CafeCommentService{
 
 	void saveComment(CafeCommentRequest commentRequest, Integer id);
 	
-	
+	List<CafeComment> findCommentByCafeId(Integer id);
 	
 }

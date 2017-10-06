@@ -3,9 +3,7 @@ package ua.model.request;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 import ua.entity.Cafe;

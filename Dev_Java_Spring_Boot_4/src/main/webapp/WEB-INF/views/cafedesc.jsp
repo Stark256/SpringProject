@@ -71,12 +71,32 @@ border-radius:18px;
 		</div>
 		
 		<form:form action="/cafedesc/${cafe.id}" method="POST" modelAttribute="comment">
+					<c:if test="${emptyUser}">
+						<div class="row">
+							<div class="col-10 ml-auto">
+								<span class="text-danger">This field must be filled</span>
+							</div>
+						</div>
+					</c:if>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="user">User:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="user" path="user"/>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label class="col-2 col-form-label" for="rate">Rate:</label>
+						<div class="col-10">
+							<form:input class="form-control" id="rate" path="rate"/>
+						</div>
+					</div>
+					<c:if test="${emptyComment}">
+						<div class="row">
+							<div class="col-10 ml-auto">
+								<span class="text-danger">This field must be filled</span>
+							</div>
+						</div>
+					</c:if>
 					 <div class="form-group row">
 						<label class="col-2 col-form-label" for="comment">Comment:</label>
 						<div class="col-10">

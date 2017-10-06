@@ -138,10 +138,10 @@ public class CafeServiceImpl   implements CafeService {
 
 
 	@Override
-	public void saveRate(Integer rate,Integer id) {
-	/*	Cafe cafe=repository.findOne(id);
-		cafe.setRate(rate);
-		repository.save(cafe);*/
+	public void saveRate(CafeRequest request) {
+		Cafe cafe=repository.findOne(request.getId());
+		cafe.setRate(request.getRate());
+		repository.save(cafe);
 	}
 
 

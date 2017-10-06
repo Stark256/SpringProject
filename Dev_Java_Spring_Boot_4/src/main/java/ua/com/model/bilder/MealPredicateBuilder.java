@@ -10,15 +10,12 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 
-import ua.entity.Cafe;
-import ua.entity.Cafe_;
 import ua.entity.Cuisine;
 import ua.entity.Cuisine_;
 import ua.entity.Ingredient;
 import ua.entity.Ingredient_;
 import ua.entity.Meal;
 import ua.entity.Meal_;
-import ua.entity.User_;
 import ua.model.filter.MealFilter;
 
 public class MealPredicateBuilder {
