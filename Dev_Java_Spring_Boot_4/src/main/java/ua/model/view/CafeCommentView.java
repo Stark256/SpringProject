@@ -6,17 +6,20 @@ import java.time.format.DateTimeFormatter;
 
 public class CafeCommentView {
 
+	private Integer id;
+	
 	private String comment;
-	
-	
-	private String user;
 	
 	private String time;
 	
+	private String user;
+	
+	
 	private BigDecimal rate;
 
-	public CafeCommentView(String comment, String user, LocalDateTime time,BigDecimal rate) {
+	public CafeCommentView(Integer id,String comment, String user, LocalDateTime time,BigDecimal rate) {
 		super();
+		this.id=id;
 		this.comment = comment;
 		this.user = user;
 		this.time = time.format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy"));
@@ -24,6 +27,30 @@ public class CafeCommentView {
 	}
 	
 	
+	
+	public String getTime() {
+		return time;
+	}
+
+
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
 
 	public BigDecimal getRate() {
 		return rate;
@@ -53,13 +80,6 @@ public class CafeCommentView {
 		this.user = user;
 	}
 
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
  	
 	
 }

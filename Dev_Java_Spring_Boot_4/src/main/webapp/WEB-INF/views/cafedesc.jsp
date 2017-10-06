@@ -18,6 +18,9 @@
 border:2px solid green;
 border-radius:18px;
 }
+.myTable{
+ background-color: #f1f1f1;
+}
 </style>
 </head>
 <body>
@@ -29,6 +32,7 @@ border-radius:18px;
 						<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
 						<td>${cafe.address}</td>
 						<td>${cafe.shortDescription}</td>
+						<td>${cafe.rate}</td>
 						<td>${cafe.type}</td>
 					</tr>
 				</table>
@@ -113,22 +117,59 @@ border-radius:18px;
 				</form:form>
 		
 		
-		<div class="row">		
+		<!--<div class="row">		
 			<div class="col-12">
 				<table class="table table-bordered">
 						<tr>
 							<th>User</th>
 							<th>Comment</th>
+							<th>Comment to Comment</th>
 						<tr>
 					<c:forEach var="comment" items="${comments}">
 						<tr>
 							<td>${comment.user}</td>
 							<td>${comment.comment}</td>
+							<td><a href="/cafedesc/${id}/tocomment/${comment.id}"  class="btn btn-info ">Comment</a></td>
 						<tr>
 					</c:forEach>
 				</table>
 			</div>
+		</div>-->
+		
+		
+		<div class="row  mr-auto">		
+			<div class="col-12">
+				<table class="table table-bordered">
+							<tr>
+								<th>User</th>
+								<th>Comment</th>
+								<th>Comment to Comment</th>
+							</tr>
+				<c:forEach var="comment" items="${comments}">
+							
+					<c:if test="${comment.parentComment==null}">
+								<tr>
+									<td>${comment.user}</td>
+									<td>${comment.comment}</td>
+									<td><a href="/cafedesc/${id}/tocomment/${comment.id}"  class="btn btn-info ">Comment</a></td>
+								</tr>
+					</c:if>
+					<c:if test="${comment.parentComment!=null}">
+								<tr class="myTable">
+									<td>${comment.user}</td>
+									<td>${comment.comment}</td>
+								</tr>
+							
+					</c:if>
+				</c:forEach>
+				</table>
+			</div>
 		</div>
+		
+		
+		
+		
+		
 	</div>
 </body>
 </html>

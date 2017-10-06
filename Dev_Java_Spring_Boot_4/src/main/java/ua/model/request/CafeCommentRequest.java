@@ -3,6 +3,7 @@ package ua.model.request;
 import java.math.BigDecimal;
 
 import ua.entity.Cafe;
+import ua.entity.CafeComment;
 
 
 public class CafeCommentRequest {
@@ -16,6 +17,18 @@ public class CafeCommentRequest {
 	private BigDecimal rate;
 	
 	private Cafe cafe;
+	
+	private CafeComment parentComment;
+	
+	
+
+	public CafeComment getParentComment() {
+		return parentComment;
+	}
+
+	public void setParentComment(CafeComment parentComment) {
+		this.parentComment = parentComment;
+	}
 
 	public Integer getId() {
 		return id;

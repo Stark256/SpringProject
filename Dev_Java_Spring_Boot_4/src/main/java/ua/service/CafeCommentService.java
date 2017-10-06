@@ -4,15 +4,20 @@ import java.util.List;
 
 import ua.entity.CafeComment;
 import ua.model.request.CafeCommentRequest;
-import ua.model.view.CafeCommentView;
 
 public interface CafeCommentService{
 
 
-	List<CafeCommentView> findAllCommentByCafeId(Integer id);
 
 	void saveComment(CafeCommentRequest commentRequest, Integer id);
 	
+	void saveCommentOnComment(CafeCommentRequest commentRequest, Integer id,Integer cafeId);
+	
 	List<CafeComment> findCommentByCafeId(Integer id);
 	
+	List<CafeComment> findAllCommentByCafe(Integer id);
+	
+	CafeCommentRequest findOne(Integer id);
+	
+	CafeComment findOneComment(Integer id);
 }

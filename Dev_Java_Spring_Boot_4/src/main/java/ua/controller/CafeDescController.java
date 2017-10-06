@@ -2,6 +2,7 @@ package ua.controller;
 
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ private final CafeCommentService commentService;
 	public String desc(@PathVariable Integer id, Model model){
 		model.addAttribute("cafe", service.findOne(id));
 		model.addAttribute("meals", indexService.findMealByCafeId(id));
-		model.addAttribute("comments", commentService.findAllCommentByCafeId(id));
+		model.addAttribute("comments", commentService.findAllCommentByCafe(id));
 		return "cafedesc";
 	}
 	
@@ -53,22 +54,63 @@ private final CafeCommentService commentService;
 			if(commentRequest.getComment().isEmpty()) model.addAttribute("emptyComment",true);
 			return desc(id, model);
 		}
-		List<CafeComment> comment=commentService.findCommentByCafeId(id);
-		BigDecimal rate=BigDecimal.ZERO;
-		int count=0;
-		for (CafeComment cafeComment : comment) {
-			if(cafeComment.getRate()!=null){
-				rate=rate.add(cafeComment.getRate());
-				count++;
+		if(commentRequest.getRate()!=null){
+			List<CafeComment> comment=commentService.findCommentByCafeId(id);
+			if(!comment.isEmpty()){
+				BigDecimal rate=BigDecimal.ZERO;
+				int count=0;
+			for (CafeComment cafeComment : comment) {
+				if(cafeComment.getRate()!=null){
+					rate=rate.add(cafeComment.getRate());
+					count++;
+				}
 			}
+			CafeRequest request=service.findOne(id);
+			request.setRate(rate.divide(new BigDecimal(count), 2, RoundingMode.HALF_UP));
+			service.saveRate(request);
+			}else{
+				CafeRequest request=service.findOne(id);
+				request.setRate(commentRequest.getRate());
+				service.saveRate(request);
+			}
+			
 		}
-		CafeRequest request=service.findOne(id);
-		request.setRate(rate.divide(new BigDecimal(count)));
-		service.saveRate(request);
 		commentService.saveComment(commentRequest, id);
 		return cancel(status);
 	}
 	
+	@PostMapping("/{id}/tocomment/{commentId}")
+	public String saveCommentComment(@ModelAttribute("comment") CafeCommentRequest commentRequest,@PathVariable Integer id,@PathVariable Integer commentId, SessionStatus status,Model model) {
+		if(commentRequest.getUser().isEmpty()||commentRequest.getComment().isEmpty()){
+			if(commentRequest.getUser().isEmpty()) model.addAttribute("emptyUser",true);
+			if(commentRequest.getComment().isEmpty()) model.addAttribute("emptyComment",true);
+			return showCommentToComment(id,commentId, model);
+		}
+		/*if(commentRequest.getRate()!=null){
+			List<CafeComment> comment=commentService.findCommentByCafeId(id);
+			BigDecimal rate=BigDecimal.ZERO;
+			int count=0;
+			for (CafeComment cafeComment : comment) {
+				if(cafeComment.getRate()!=null){
+					rate=rate.add(cafeComment.getRate());
+					count++;
+				}
+			}
+			CafeRequest request=service.findOne(id);
+			request.setRate(rate.divide(new BigDecimal(count)));
+			service.saveRate(request);
+		}*/
+		commentService.saveCommentOnComment(commentRequest, commentId,id);
+		return cancel(status);
+	}
+	
+	@GetMapping("/{id}/tocomment/{commentId}")
+	public String showCommentToComment(@PathVariable Integer id,@PathVariable Integer commentId, Model model){
+		//model.addAttribute("comment", commentService.findOne(id));
+		model.addAttribute("cafe", service.findOneRequest(id));
+		model.addAttribute("commentId", commentId);
+		return "comtocom";
+	}
 	
 	@ModelAttribute("comment")
 	public CafeCommentRequest getFormComment() {
@@ -80,6 +122,5 @@ private final CafeCommentService commentService;
 		status.setComplete();
 		return "redirect:/cafedesc/{id}";
 	}	
-	
 	
 }

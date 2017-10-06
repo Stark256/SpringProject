@@ -23,13 +23,14 @@ public class CafeComment extends AbstractEntity{
 	
 	private BigDecimal rate;
 	
+	private LocalDateTime time;
+	
 	@ManyToOne
 	private CafeComment parentComment;
 	
 	@OneToMany(mappedBy="parentComment")
 	private List<CafeComment> childComment = new ArrayList<CafeComment>();
 	
-	private LocalDateTime time;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Cafe cafe;
@@ -59,14 +60,6 @@ public class CafeComment extends AbstractEntity{
 		this.cafe = cafe;
 	}
 
-	public LocalDateTime getTime() {
-		return time;
-	}
-
-	public void setTime(LocalDateTime time) {
-		this.time = time;
-	}
-
 	public BigDecimal getRate() {
 		return rate;
 	}
@@ -89,6 +82,14 @@ public class CafeComment extends AbstractEntity{
 
 	public void setChildComment(List<CafeComment> childComment) {
 		this.childComment = childComment;
+	}
+
+	public LocalDateTime getTime() {
+		return time;
+	}
+
+	public void setTime(LocalDateTime time) {
+		this.time = time;
 	}
 	
 	
