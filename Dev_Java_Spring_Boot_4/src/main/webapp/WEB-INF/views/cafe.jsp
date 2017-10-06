@@ -14,12 +14,17 @@
 <title>Cafe</title>
 </head>
 <body>
-<a href="/addcafe" class="btn btn-outline-warning btn-sm">Add Cafe</a>
+	<div class="container">
+		<div class="row">
+			<a href="/addcafe" class="btn btn-success btn-block mt-3">Add Cafe</a>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">
 					<tr>
+					<th class="text-center">Photo</th>
 						<th class="text-center">Name</th>
 						<th class="text-center">Address</th>
 						<th class="text-center">Full description</th>
@@ -32,6 +37,7 @@
 					</tr>
 					<c:forEach var="cafe" items="${cafes}">
 						<tr>
+						<td><img src="/img/${cafe.photoUrl}?version=${cafe.version}" width="150" height="100" class="img-fluid"></td>
 							<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
 							<td>${cafe.address}</td>
 							<td>${cafe.fullDescription}</td>

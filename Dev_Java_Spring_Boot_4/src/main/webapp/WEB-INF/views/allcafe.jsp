@@ -98,13 +98,18 @@
 			<div class="col-9">
 				<table class="table table-bordered">
 					<tr>
+						<th class="text-center">Photo</th>
 						<th class="text-center">Name</th>
 						<th class="text-center">Address</th>
 						<th class="text-center">Short description</th>
 						<th class="text-center">Type</th>
 					</tr>
 					<c:forEach var="cafe" items="${cafes.content}">
+						<!-- <div class="col-3">
+								<img src="/img/${cafe.photoUrl}?version=${cafe.version}" class="img-fluid">
+						</div> -->
 						<tr>
+							<td><img src="/img/${cafe.photoUrl}?version=${cafe.version}" width="150" height="100" class="img-fluid"></td>
 							<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
 							<td>${cafe.address}</td>
 							<td>${cafe.shortDescription}</td>

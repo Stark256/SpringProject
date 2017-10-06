@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.model.request.MealRequest;
+import ua.service.FileWriter;
 import ua.service.MealService;
 
 @Controller
@@ -23,6 +24,9 @@ import ua.service.MealService;
 public class AddMealController {
 
 	private final MealService service;
+	
+	@Autowired
+	private FileWriter writer;
 	
 	@Autowired
 	public AddMealController(MealService service) {
@@ -37,18 +41,16 @@ public class AddMealController {
 	@PostMapping
 	public String save(@ModelAttribute("addmeal")  MealRequest request,Model model, SessionStatus status,Principal principal) {
 		if(request.getTitle().isEmpty()||request.getWeight().isEmpty()||request.getDescription().isEmpty()||request.getPrice().isEmpty()
-				||request.getIngredients().isEmpty()){
+				||request.getIngredients().isEmpty()||request.getPhoto().isEmpty()){
 			if(request.getTitle().isEmpty()) model.addAttribute("emptyTitle",true);
 			if(request.getWeight().isEmpty()) model.addAttribute("emptyWeight",true);
 			if(request.getDescription().isEmpty()) model.addAttribute("emptyDesc",true);
 			if(request.getPrice().isEmpty()) model.addAttribute("emptyPrice",true);
 			if(request.getIngredients().isEmpty()) model.addAttribute("emptyIngredient",true);
+			if(request.getPhoto().isEmpty()) model.addAttribute("emptyPhoto",true);
 			return show(model,principal);
 		}
-		
-			
-		
-		service.save(request);
+		service.save(request,writer.write(request.getPhoto()));
 		return cancel(status);
 	}
 	

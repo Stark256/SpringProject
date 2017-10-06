@@ -73,6 +73,8 @@
 			<div class="col-9">
 				<table class="table table-bordered">
 					<tr>
+						
+						<th class="text-center">Photo</th>
 						<th class="text-center">Title</th>
 						<th class="text-center">Description</th>
 						<th class="text-center">Price</th>
@@ -81,6 +83,7 @@
 					</tr>
 					<c:forEach var="meal" items="${meals.content}">
 						<tr>
+							<td><img src="/img/${meal.photoUrl}?version=${meal.version}" width="150" height="100" class="img-fluid"></td>
 							<td><a href="/mealdesc/${meal.id}">${meal.title}</a></td>
 							<td>${meal.description}</td>
 							<td>${meal.price}</td>

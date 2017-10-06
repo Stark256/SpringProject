@@ -11,12 +11,17 @@
 <title>Meal</title>
 </head>
 <body>
-<a href="/addmeal" class="btn btn-outline-warning btn-sm">Add Meal</a>
+	<div class="container">
+		<div class="row">
+			<a href="/addmeal"  class="btn btn-success btn-block mt-3">Add Meal</a>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
 				<table class="table table-bordered">
 					<tr>
+						<th class="text-center">Photo</th>
 						<th class="text-center">Title</th>
 						<th class="text-center">Cafe</th>
 						<th class="text-center">Description</th>
@@ -28,7 +33,8 @@
 					</tr>
 					<c:forEach var="meal" items="${meals}">
 						<tr>
-							<td>${meal.title}</td>
+							<td><img src="/img/${meal.photoUrl}?version=${meal.version}" width="150" height="100" class="img-fluid"></td>
+							<td><a href="/mealdesc/${meal.id}">${meal.title}</a></td>
 							<td>${meal.cafe}</td>
 							<td>${meal.description}</td>
 							<td>${meal.price}</td>

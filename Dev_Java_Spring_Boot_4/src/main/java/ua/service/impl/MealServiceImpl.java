@@ -51,17 +51,17 @@ public class MealServiceImpl implements MealService{
 	
 	
 	@Override
-	public void save(MealRequest request) {
+	public void save(MealRequest request,String photo) {
 		Meal meal = new Meal();
 		meal.setCafe(request.getCafe());
 		meal.setCuisine(request.getCuisine());
 		meal.setDescription(request.getDescription());
 		meal.setId(request.getId());
 		meal.setIngredients(request.getIngredients());
-		meal.setPhotoUrl(request.getPhotoUrl());
+		meal.setPhotoUrl(photo);
 		meal.setPrice(new BigDecimal(request.getPrice()));
 		meal.setTitle(request.getTitle());
-		meal.setVersion(request.getVersion());
+		meal.setVersion(request.getPhotoUrl() != null && request.getPhotoUrl().equals(photo) ? request.getVersion() + 1 : 0);
 		meal.setWeight(Integer.valueOf(request.getWeight()));
 		repository.save(meal);
 	}

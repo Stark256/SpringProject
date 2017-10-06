@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-6 mr-auto ml-auto ">
 				<form:form action="/registration" method="POST" modelAttribute="registration">
 					<div class="row">
 						<div class="col-10 ml-auto" style="color:red;">

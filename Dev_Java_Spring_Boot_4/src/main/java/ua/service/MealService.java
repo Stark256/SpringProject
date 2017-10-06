@@ -15,7 +15,7 @@ public interface MealService {
 
 	List<MealView> findAllMealByCafeId(Principal principal);
 
-	void save(MealRequest request);
+	void save(MealRequest request,String photo);
 
 	MealRequest findOne(Integer id);
 

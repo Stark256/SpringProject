@@ -17,7 +17,7 @@
   <div class="container">
   	<div class="row">
       <div class="col-12">
-      		<a href="/profile/cafe/addtable/${cafeId}"  class="btn btn-outline-info btn-sm">Tables</a>
+      		<a href="/profile/cafe/addtable/${cafeId}"  class="btn btn-success btn-block mt-3">Tables</a>
       </div>
      </div>
  	 <div class="row">

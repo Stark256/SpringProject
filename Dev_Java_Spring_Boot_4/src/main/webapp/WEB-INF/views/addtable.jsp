@@ -16,7 +16,7 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-6 mr-auto ml-auto">
         <form:form action="/profile/cafe/addtable/${cafeId}" method="POST" modelAttribute="_table">
          <c:if test="${emptyNumber}">
 				<div class="row">
@@ -26,7 +26,7 @@
 				</div>
 			</c:if>
           <div class="form-group row">
-            <label class="col-2 col-form-label" for="number">Number :</label>
+            <label class="col-2 col-form-label" for="number">Number:</label>
             <div class="col-10">
               <form:input class="form-control" id="number" 
                 path="number" />
@@ -40,7 +40,7 @@
 				</div>
 			</c:if>
           <div class="form-group row">
-            <label class="col-2 col-form-label" for="countOfPeople">Count of chairs :</label>
+            <label class="col-2 col-form-label" for="countOfPeople">Count of chairs:</label>
             <div class="col-10">
               <form:input class="form-control" id="countOfPeople" 
                 path="countOfPeople" />
@@ -58,7 +58,7 @@
     </div>
     <div class="row">
       	<div class="col-12">
-      		<a href="/order/allorders/${cafeId}" class="btn btn-outline-danger btn-sm">All Orders</a>
+      		<a href="/order/allorders/${cafeId}" class="btn btn-success btn-block mt-3">All Orders</a>
     	</div>
     </div>
     <div class="row">
@@ -80,7 +80,7 @@
              <td>№${table.number}</td>
               <td>${table.countOfPeople}</td>
               <td>${table.isFree}</td>
-              <td>${table.cafe}</td>
+              <td><a href="/cafedesc/${cafeId}">${table.cafe}</a></td>
               <td>${table.user}</td>
               <td>${table.userPhone}</td>
               <td>${table.timeReserv}</td>
@@ -96,7 +96,7 @@
                  </c:if>
                 <c:if test="${table.isFree.equals(false)}">
                 	 <a  href="/profile/cafe/addtable/${cafeId}/unbook/${table.id}"  class="btn btn-outline-danger btn-sm">Unbook</a>
-                	  <a href="/order/someth/${cafeId}/table/${table.id}" class="btn btn-outline-danger btn-sm">Order</a>
+                	  <a href="/order/someth/${cafeId}/table/${table.id}" class="btn btn-outline-warning btn-sm">Order</a>
                  </c:if>
                 </td>
             </tr>

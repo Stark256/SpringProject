@@ -16,7 +16,7 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-6 mr-auto ml-auto">
         <form:form action="/profile/cafe/addtable/${cafeId}/reserve/${_table.id}" method="POST" modelAttribute="_table">
           <c:if test="${emptyName}">
 				<div class="row">

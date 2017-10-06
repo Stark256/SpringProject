@@ -16,6 +16,7 @@
 		
 		<table class="table table-bordered">
 						<tr>
+							<td><img src="/img/${meal.photoUrl}?version=${meal.version}" width="150" height="100" class="img-fluid"></td>
 							<td>${meal.title}</td>
 							<td><a href="/cafedesc/${meal.cafe.id}">${meal.cafe.name}</a></td>
 							<td>${meal.description}</td>

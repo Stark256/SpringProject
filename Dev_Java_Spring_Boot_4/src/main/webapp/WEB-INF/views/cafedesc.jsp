@@ -15,111 +15,45 @@
 <title>CafeDesc</title>
 <style>
 .one{
-border:2px solid black;
-}
-.two{
-margin:5px;
-
-border:1px solid black;
-}
-div.stars {
-  width: 270px;
-  display: inline-block;
-}
-input.star { display: none; }
-label.star {
-  float: right;
-  padding: 10px;
-  font-size: 36px;
-  color: #444;
-  transition: all .2s;
-}
-input.star:checked ~ label.star:before {
-  content: '\f005';
-  color: #FD4;
-  transition: all .25s;
-}
-input.star-5:checked ~ label.star:before {
-  color: #FE7;
-  text-shadow: 0 0 20px #952;
-}
-input.star-1:checked ~ label.star:before { color: #F62; }
-label.star:hover { transform: rotate(-15deg) scale(1.3); }
-label.star:before {
-  content: '\f006';
-  font-family: FontAwesome;
+border:2px solid green;
+border-radius:18px;
 }
 </style>
 </head>
 <body>
 	<div class="container">
-			<div class="row one">
-				<div class="col-12">
-					<div class="row">
-						<div class="col-1 two">Photo</div>				
-						<div class="col-10">
-							<div class="row">
-								<div class="col-12">
-									<div class="row">
-										<div class="col-6">${cafe.name}</div>
-										<div class="col-6">${cafe.type}</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-12">
-									<div class="row">
-										<div class="col-6">${cafe.address}</div>
-										<div class="col-6">${cafe.phone}</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-12">${cafe.open}-${cafe.close}</div>
-							</div>
-							<div class="row">
-								<div class="col-12">${cafe.fullDescription}</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="row">
+				<table class="table table-bordered one">
+					<tr>
+						<td><img src="/img/${cafe.photoUrl}?version=${cafe.version}" width="150" height="100" class="img-fluid"></td>
+						<td><a href="/cafedesc/${cafe.id}">${cafe.name}</a></td>
+						<td>${cafe.address}</td>
+						<td>${cafe.shortDescription}</td>
+						<td>${cafe.type}</td>
+					</tr>
+				</table>
 				
 		</div>
-		<div class="row">
-			<div class="stars">
-				  <form action="/cafedesc/rating/${cafe.id}" method="POST">
-				    <input class="star star-5" id="star-5" value="5" type="radio" name="star"/>
-				   <label class="star star-5" for="star-5"></label>
-				    <input class="star star-4" id="star-4" value="4" type="radio" name="star"/>
-				     <label class="star star-4" for="star-4"></label>
-				    <input class="star star-3" id="star-3" value="3" type="radio" name="star"/>
-				     <label class="star star-3" for="star-3"></label>
-				    <input class="star star-2" id="star-2" value="2" type="radio" name="star"/>
-				     <label class="star star-2" for="star-2"></label>
-				    <input class="star star-1" id="star-1" value="1" type="radio" name="star"/>
-				     <label class="star star-1" for="star-1"></label>
-				     <button class="btn btn-sm btn-outline-success">Save</button>
-				  </form>
-			</div>
-		</div> 
 		<div class="row">		
 			<div class="col-12">
-				<a href="/clientRes/addtable/${cafe.id}/client" class="btn btn-sm btn-outline-info">Reserve Table</a>
+				<a href="/clientRes/addtable/${cafe.id}/client"  class="btn btn-info btn-block mt-3">Reserve Table</a>
 			</div>
 			</div>
 		<div class="row">		
 			<div class="col-12">
 				<table class="table table-bordered">
 						<tr>
-							<th>Meal title</th>
-							<th>Meal cuisine</th>
-							<th>Meal weight</th>
-							<th>Meal price</th>
-							<th>Meal description</th>
-							<th>Meal ingredients</th>
+							<th class="text-center">Meal photo</th>
+							<th class="text-center">Meal title</th>
+							<th class="text-center">Meal cuisine</th>
+							<th class="text-center">Meal weight</th>
+							<th class="text-center">Meal price</th>
+							<th class="text-center">Meal description</th>
+							<th class="text-center">Meal ingredients</th>
 						<tr>
 					<c:forEach var="meal" items="${meals}">
 						<tr>
+							<td><img src="/img/${meal.photoUrl}?version=${meal.version}" width="150" height="100" class="img-fluid"></td>
 							<td><a href="/mealdesc/${meal.id}">${meal.title}</a></td>
 							<td>${meal.cuisine.name}</td>
 							<td>${meal.weight}</td>

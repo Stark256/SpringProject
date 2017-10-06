@@ -12,7 +12,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-6 mr-auto ml-auto">
 				<form:form action="/order/someth/${cafeId}/table/${tableId}" method="POST" modelAttribute="order">
 					<c:if test="${emptyMeals}">
 						<div class="row">

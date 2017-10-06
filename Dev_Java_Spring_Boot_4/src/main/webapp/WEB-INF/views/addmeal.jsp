@@ -13,8 +13,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-12">
-				<form:form action="/addmeal" method="POST" modelAttribute="addmeal">
+			<div class="col-6 mr-auto ml-auto">
+				<form:form action="/addmeal" method="POST" modelAttribute="addmeal" enctype="multipart/form-data">
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="cafe">Cafe:</label>
 						<div class="col-10">
@@ -90,6 +90,19 @@
 						<label class="col-2 col-form-label" for="ingredients">Ingredients:</label>
 						<div class="col-10">
 							<form:select path="ingredients" items="${ingredients}" class="form-control" multiple="multiple"/>
+						</div>
+					</div>
+					<c:if test="${emptyPhoto}">
+						<div class="row">
+							<div class="col-10 ml-auto">
+								<span class="text-danger">Choose something</span>
+							</div>
+						</div>
+					</c:if>
+					<div class="form-group row">
+						<label class="col-2 col-form-label" for="photo">Photo:</label>
+						<div class="col-10">
+							<input name="photo" type="file" id="photo">
 						</div>
 					</div>
 					<div class="form-group row">

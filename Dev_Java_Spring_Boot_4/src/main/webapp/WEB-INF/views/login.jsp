@@ -18,7 +18,7 @@
 					Fail to authorize
 				</div>
 			</c:if>
-			<div class="col-12">
+			<div class="col-6 mr-auto ml-auto">
 				<form:form action="/login" method="POST">
 					<!--<div class="input-group margin-bottom-sm">
 					  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
