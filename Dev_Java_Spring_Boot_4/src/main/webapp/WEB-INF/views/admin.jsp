@@ -13,10 +13,17 @@
 </head>
 <body>
 	<div class="container">
-		<h2>Admin</h2>
-		<a href="/admin/cuisine">Cuisine</a>
-		 <br> <a href="/admin/ingredient">Ingredient</a> 
-			<br> <a	href="/admin/time">Time</a> 
+	<div class="row">
+		<div class="col-3">
+			<a href="/admin/cuisine" class="btn btn-info btn-block mt-3">Cuisine</a>
+		  </div>
+		 <div class="col-3">
+		  	<a href="/admin/ingredient" class="btn btn-info btn-block mt-3">Ingredient</a> 
+			 </div>
+		  <div class="col-3">
+			<a	href="/admin/time" class="btn btn-info btn-block mt-3">Time</a> 
+			</div>
+	</div>
 	</div>
 </body>
 </html>
