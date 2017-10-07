@@ -25,6 +25,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="name"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="name">Name:</label>
 						<div class="col-10">
@@ -38,6 +43,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="address"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="address">Address:</label>
 						<div class="col-10">
@@ -51,6 +61,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="fullDescription"/>
+						</div>
+					</div>
 					 <div class="form-group row">
 						<label class="col-2 col-form-label" for="fullDescription">Full Description:</label>
 						<div class="col-10">
@@ -65,6 +80,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="shortDescription"/>
+						</div>
+					</div>
 					 <div class="form-group row">
 						<label class="col-2 col-form-label" for="shortDescription">Short Description:</label>
 						<div class="col-10">
@@ -85,6 +105,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="phone"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="phone">Phone:</label>
 						<div class="col-10">

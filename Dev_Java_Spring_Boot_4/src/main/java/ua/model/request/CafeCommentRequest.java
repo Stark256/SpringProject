@@ -2,6 +2,10 @@ package ua.model.request;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.DecimalMax;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import ua.entity.Cafe;
 import ua.entity.CafeComment;
 
@@ -10,10 +14,13 @@ public class CafeCommentRequest {
 
 	private Integer id;
 
+	@NotBlank(message = "this field is required")
 	private String comment;
 	
+	@NotBlank(message = "this field is required")
 	private String user;
 	
+	@DecimalMax("10.00")
 	private BigDecimal rate;
 	
 	private Cafe cafe;

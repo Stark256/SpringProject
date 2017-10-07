@@ -28,6 +28,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="title"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="title">Title:</label>
 						<div class="col-10">
@@ -41,6 +46,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="description"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="description">Description:</label>
 						<div class="col-10">
@@ -54,6 +64,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="price"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="price">Price:</label>
 						<div class="col-10">
@@ -67,6 +82,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="weight"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="weight">Weight:</label>
 						<div class="col-10">
@@ -86,6 +106,11 @@
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="ingredients"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="ingredients">Ingredients:</label>
 						<div class="col-10">

@@ -7,6 +7,9 @@ package ua.model.request;
 import java.math.BigDecimal;
 import java.time.LocalTime;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -16,20 +19,27 @@ public class CafeRequest {
 
 	private BigDecimal rate;
 	
+	@Pattern(regexp = "^([A-Z][a-z]+)?$", message = "The name must start with a capital letter")
+	@NotBlank(message = "this field is required")
 	private String name;
 
 	private String photoUrl;
 
 	private int version;
 
+	@NotBlank(message = "this field is required")
 	private String address;
 
+	@NotBlank(message = "this field is required")
 	private String fullDescription;
 	
+	@NotBlank(message = "this field is required")
 	private String shortDescription;
 
 	private String type;
 
+	@Pattern(regexp = "^(\\+380[0-9]{9})?$", message = "Value must +380XXXXXXXXX")
+	@NotBlank(message = "this field is required")
 	private String phone;
 	
 	private String email;

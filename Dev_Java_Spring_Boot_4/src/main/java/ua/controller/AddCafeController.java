@@ -2,10 +2,12 @@ package ua.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,8 +48,8 @@ public class AddCafeController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("addcafe")  CafeRequest request,Model model, SessionStatus status,Principal principal) {
-		if(request.getName().isEmpty()||request.getAddress().isEmpty()||request.getFullDescription().isEmpty()||
+	public String save(@ModelAttribute("addcafe") @Valid CafeRequest request,BindingResult br,Model model, SessionStatus status,Principal principal) {
+		/*if(request.getName().isEmpty()||request.getAddress().isEmpty()||request.getFullDescription().isEmpty()||
 				request.getShortDescription().isEmpty()||request.getPhone().isEmpty()||request.getPhoto().isEmpty()){
 			if(request.getName().isEmpty()) model.addAttribute("emptyName",true);
 			if(request.getAddress().isEmpty())model.addAttribute("emptyAddress",true);
@@ -55,6 +57,13 @@ public class AddCafeController {
 			if(request.getShortDescription().isEmpty())model.addAttribute("emptySD",true);
 			if(request.getPhone().isEmpty())model.addAttribute("emptyPhone",true);
 			if(request.getPhoto().isEmpty())model.addAttribute("emptyPhoto",true);
+			return showForm(model);
+		}*/
+		if(request.getPhoto().isEmpty()){
+			model.addAttribute("emptyPhoto",true);
+			return showForm(model);
+		}
+		if(br.hasErrors()){
 			return showForm(model);
 		}
 		service.save(request,principal,writer.write(request.getPhoto()));

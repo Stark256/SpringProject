@@ -44,18 +44,24 @@ border-radius:18px;
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="user"/>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-2 col-form-label" for="user">User:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="user" path="user"/>
 						</div>
 					</div>
-					<!-- <div class="form-group row">
+					
+					 <!-- <div class="form-group row">
 						<label class="col-2 col-form-label" for="rate">Rate:</label>
 						<div class="col-10">
 							<form:input class="form-control" id="rate" path="rate"/>
 						</div>
-					</div> -->
+					</div>  -->
 					<c:if test="${emptyComment}">
 						<div class="row">
 							<div class="col-10 ml-auto">
@@ -63,6 +69,11 @@ border-radius:18px;
 							</div>
 						</div>
 					</c:if>
+					<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="comment"/>
+						</div>
+					</div>
 					 <div class="form-group row">
 						<label class="col-2 col-form-label" for="comment">Comment:</label>
 						<div class="col-10">

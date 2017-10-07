@@ -5,9 +5,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,12 +51,17 @@ private final CafeCommentService commentService;
 	}
 	
 	@PostMapping("/{id}")
-	public String saveComment(@ModelAttribute("comment") CafeCommentRequest commentRequest,@PathVariable Integer id, SessionStatus status,Model model) {
-		if(commentRequest.getUser().isEmpty()||commentRequest.getComment().isEmpty()){
+	public String saveComment(@ModelAttribute("comment") @Valid CafeCommentRequest commentRequest,BindingResult br,@PathVariable Integer id, SessionStatus status,Model model) {
+		/*if(commentRequest.getUser().isEmpty()||commentRequest.getComment().isEmpty()){
 			if(commentRequest.getUser().isEmpty()) model.addAttribute("emptyUser",true);
 			if(commentRequest.getComment().isEmpty()) model.addAttribute("emptyComment",true);
 			return desc(id, model);
+		}*/
+		
+		if(br.hasErrors()){
+			return desc(id, model);
 		}
+		
 		if(commentRequest.getRate()!=null){
 			List<CafeComment> comment=commentService.findCommentByCafeId(id);
 			if(!comment.isEmpty()){
@@ -80,10 +88,13 @@ private final CafeCommentService commentService;
 	}
 	
 	@PostMapping("/{id}/tocomment/{commentId}")
-	public String saveCommentComment(@ModelAttribute("comment") CafeCommentRequest commentRequest,@PathVariable Integer id,@PathVariable Integer commentId, SessionStatus status,Model model) {
-		if(commentRequest.getUser().isEmpty()||commentRequest.getComment().isEmpty()){
+	public String saveCommentComment(@ModelAttribute("comment") @Valid CafeCommentRequest commentRequest,BindingResult br,@PathVariable Integer id,@PathVariable Integer commentId, SessionStatus status,Model model) {
+		/*if(commentRequest.getUser().isEmpty()||commentRequest.getComment().isEmpty()){
 			if(commentRequest.getUser().isEmpty()) model.addAttribute("emptyUser",true);
 			if(commentRequest.getComment().isEmpty()) model.addAttribute("emptyComment",true);
+			return showCommentToComment(id,commentId, model);
+		}*/
+		if(br.hasErrors()){
 			return showCommentToComment(id,commentId, model);
 		}
 		/*if(commentRequest.getRate()!=null){
