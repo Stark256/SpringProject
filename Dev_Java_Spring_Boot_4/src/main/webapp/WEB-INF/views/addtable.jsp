@@ -25,6 +25,11 @@
 					</div>
 				</div>
 			</c:if>
+			<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="number"/>
+						</div>
+					</div>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="number">Number:</label>
             <div class="col-10">
@@ -39,6 +44,11 @@
 					</div>
 				</div>
 			</c:if>
+			<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="countOfPeople"/>
+						</div>
+					</div>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="countOfPeople">Count of chairs:</label>
             <div class="col-10">
@@ -70,7 +80,7 @@
             <th class="text-center">Is Free</th>
             <th class="text-center">Cafe</th>
             <th class="text-center">User</th>
-            <th class="text-center">User phone</th>
+           <!--  <th class="text-center">User phone</th> -->
             <th class="text-center">Time</th>
             <th class="text-center">Options</th>
             <th class="text-center">Reservation</th>
@@ -82,7 +92,7 @@
               <td>${table.isFree}</td>
               <td><a href="/cafedesc/${cafeId}">${table.cafe}</a></td>
               <td>${table.user}</td>
-              <td>${table.userPhone}</td>
+            <!--   <td>${table.userPhone}</td> -->
               <td>${table.timeReserv}</td>
               
               <td class="text-center"><!-- <a

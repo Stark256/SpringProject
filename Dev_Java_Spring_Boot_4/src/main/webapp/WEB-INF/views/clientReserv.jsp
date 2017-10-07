@@ -31,7 +31,7 @@
               <form:input class="form-control" id="user" path="user" />
             </div>
           </div>
-          <c:if test="${emptyPhone}">
+          <!-- <c:if test="${emptyPhone}">
 				<div class="row">
 					<div class="col-10 ml-auto">
 							<span class="text-danger">This field must be filled</span>
@@ -43,7 +43,7 @@
             <div class="col-10">
               <form:input class="form-control" id="userPhone" path="userPhone" />
             </div>
-          </div>
+          </div>-->
            <div class="form-group row">
 			<label class="col-2 col-form-label" for="timeReserv">Time :</label>
 			<div class="col-10">

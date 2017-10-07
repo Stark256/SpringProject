@@ -5,9 +5,12 @@ package ua.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -61,10 +64,13 @@ public class TableController {
   }
   
   @PostMapping("/addtable/{id}")
-  public String save(@ModelAttribute("_table") TableRequest request,Model model,  SessionStatus status, @PathVariable Integer id) {
-	  if(request.getNumber()==null||request.getCountOfPeople()==null){
+  public String save(@ModelAttribute("_table") @Valid TableRequest request,BindingResult br,Model model,  SessionStatus status, @PathVariable Integer id) {
+	 /* if(request.getNumber()==null||request.getCountOfPeople()==null){
 		  if(request.getNumber()==null)model.addAttribute("emptyNumber",true);
 		  if(request.getCountOfPeople()==null)model.addAttribute("emptyChairs",true);
+		  return show(model,id);
+	  }*/
+	  if(br.hasErrors()){
 		  return show(model,id);
 	  }
 	  request.setIsFree(true);
@@ -91,12 +97,17 @@ public class TableController {
   } 
   
   @PostMapping("/addtable/{id}/reserve/{tableId}")
-  public String reserveSave(@ModelAttribute("_table")  TableRequest request,Model model, @PathVariable Integer id, @PathVariable Integer tableId) {
-	  if(request.getUser().isEmpty()||request.getUserPhone().isEmpty()){
+  public String reserveSave(@ModelAttribute("_table") TableRequest request,Model model, @PathVariable Integer id, @PathVariable Integer tableId) {
+	 /* if(request.getUser().isEmpty()||request.getUserPhone().isEmpty()){
 		  if(request.getUser().isEmpty())model.addAttribute("emptyName",true);
 		  if(request.getUserPhone().isEmpty())model.addAttribute("emptyPhone",true);
 		  return reserve(id,tableId,model);
+	  }*/
+	  if(request.getUser().isEmpty()){
+	  model.addAttribute("emptyName",true);
+		  return reserve(id,tableId,model);
 	  }
+	 
 	  request.setId(tableId);
   request.setIsFree(false);
   System.out.println(request.getId());

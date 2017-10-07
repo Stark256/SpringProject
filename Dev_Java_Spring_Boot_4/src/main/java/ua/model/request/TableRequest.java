@@ -1,7 +1,11 @@
 package ua.model.request;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.NotBlank;
 
 import ua.entity.Cafe;
 import ua.entity.OpenClose;
@@ -13,8 +17,13 @@ public class TableRequest {
 	//@NotBlank(message="Це поле має бути заповненим")
 	private OpenClose timeReserv;
 
-	@NotNull(message="Це поле має бути заповненим")
-	private Integer countOfPeople;
+	//@NotBlank(message = "this field is required")
+	//@Pattern(regexp = "^(\\[1-9]{2})?$", message = "Value must be betwen 1 to 99")
+	@Max(value = 10000, message = "must be less than or equal to 100")
+	@Min(value = 0, message = "must be greater than or equal to 0")
+	@Pattern(regexp = "^([0-9]+([,.][0-9]{1,2})?)?$", message = "this value is not valid")
+	@NotBlank(message = "this field is required")
+	private String countOfPeople;
 
 	private boolean isFree;
 
@@ -27,8 +36,13 @@ public class TableRequest {
 
 	private Cafe cafe;
 	
-	@NotNull(message="Це поле має бути заповненим")
-	private Integer number;
+	//@NotBlank(message = "this field is required")
+	//@Pattern(regexp = "^(\\[1-9]{2})?$", message = "Value must be betwen 1 to 99")
+	@Max(value = 10000, message = "must be less than or equal to 100")
+	@Min(value = 0, message = "must be greater than or equal to 0")
+	@Pattern(regexp = "^([0-9]+([,.][0-9]{1,2})?)?$", message = "this value is not valid")
+	@NotBlank(message = "this field is required")
+	private String number;
 
 	public OpenClose getTimeReserv() {
 		return timeReserv;
@@ -78,19 +92,19 @@ public class TableRequest {
 		this.cafe = cafe;
 	}
 
-	public Integer getCountOfPeople() {
+	public String getCountOfPeople() {
 		return countOfPeople;
 	}
 
-	public void setCountOfPeople(Integer countOfPeople) {
+	public void setCountOfPeople(String countOfPeople) {
 		this.countOfPeople = countOfPeople;
 	}
 
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 	

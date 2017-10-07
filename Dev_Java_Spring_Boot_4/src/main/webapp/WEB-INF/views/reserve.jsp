@@ -21,17 +21,22 @@
           <c:if test="${emptyName}">
 				<div class="row">
 					<div class="col-10 ml-auto">
-							<span class="text-danger">Це поле має бути заповненим</span>
+							<span class="text-danger">This field must be filled</span>
 					</div>
 				</div>
 			</c:if>
+			<div class="row">
+						<div class="col-10 ml-auto" style="color:red;">
+							<form:errors path="user"/>
+						</div>
+					</div>
           <div class="form-group row">
             <label class="col-2 col-form-label" for="user">Name :</label>
             <div class="col-10">
               <form:input class="form-control" id="user" path="user" />
             </div>
           </div>
-           <c:if test="${emptyPhone}">
+          <!--  <c:if test="${emptyPhone}">
 				<div class="row">
 					<div class="col-10 ml-auto">
 							<span class="text-danger">Це поле має бути заповненим</span>
@@ -43,7 +48,7 @@
             <div class="col-10">
               <form:input class="form-control" id="userPhone" path="userPhone" />
             </div>
-          </div>
+          </div>-->
           <div class="form-group row">
 			<label class="col-2 col-form-label" for="timeReserv">Time :</label>
 			<div class="col-10">

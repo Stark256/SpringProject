@@ -43,9 +43,9 @@ public class TableServiceImpl implements TableService {
   public void saveReserv(TableRequest request) {
     Table table = new Table();
     table.setId(request.getId());
-    table.setNumber(request.getNumber());
+    table.setNumber(Integer.valueOf(request.getNumber()));
     table.setTimeReserv(request.getTimeReserv());
-    table.setCountOfPeople(request.getCountOfPeople());
+    table.setCountOfPeople(Integer.valueOf(request.getCountOfPeople()));
     table.setUser(request.getUser());
     table.setUserPhone(request.getUserPhone());
     table.setIsFree(request.getIsFree());
@@ -56,9 +56,9 @@ public class TableServiceImpl implements TableService {
   public void save(TableRequest request) {
 	  Table table = new Table();
 	  //  table.setId(request.getId());
-	  	table.setNumber(request.getNumber());
+	  	table.setNumber(Integer.valueOf(request.getNumber()));
 	    table.setTimeReserv(request.getTimeReserv());
-	    table.setCountOfPeople(request.getCountOfPeople());
+	    table.setCountOfPeople(Integer.valueOf(request.getCountOfPeople()));
 	    table.setUser(request.getUser());
 	    table.setUserPhone(request.getUserPhone());
 	    table.setIsFree(request.getIsFree());
@@ -76,9 +76,9 @@ public class TableServiceImpl implements TableService {
     Table table = repository.findOne(id);
     TableRequest request = new TableRequest();
     request.setId(table.getId());
-    request.setNumber(table.getNumber());
+    request.setNumber(Integer.valueOf(table.getNumber()).toString());
     request.setTimeReserv(table.getTimeReserv());
-    request.setCountOfPeople(Integer.valueOf(table.getCountOfPeople()));
+    request.setCountOfPeople(Integer.valueOf(table.getCountOfPeople()).toString());
     request.setUser(table.getUser());
     request.setUserPhone(table.getUserPhone());
     request.setIsFree(table.getIsFree());

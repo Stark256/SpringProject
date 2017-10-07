@@ -25,6 +25,8 @@ public class ClientTableController {
 	  public ClientTableController(TableService service) {
 	    this.service = service;
 	  }
+	  
+	  
 	
 	@GetMapping("/addtable/{id}/client")
 	  public String showForClient(Model model, @PathVariable Integer id) {
@@ -39,14 +41,20 @@ public class ClientTableController {
 	    model.addAttribute("_table", service.findOne(tableId));
 	    model.addAttribute("times", service.findAllOpenCloses());
 	    model.addAttribute("cafeId", id);
+	   // model.addAttribute("tableId", tableId);
+	    
 	    return "clientReserv";
 	  } 
 	  
+	 /* @ModelAttribute("_table")
+	  public TableRequest getForm() {
+	    return new TableRequest();
+	  }*/
+	  
 	  @PostMapping("/addtable/{id}/client/{tableId}")
 	  public String reserveSaveClient(@ModelAttribute("_table") TableRequest request, @PathVariable Integer id, @PathVariable Integer tableId, Model model) {
-		  if(request.getUser().isEmpty()||request.getUserPhone().isEmpty()){
-			  if(request.getUser().isEmpty())model.addAttribute("emptyName",true);
-			  if(request.getUserPhone().isEmpty())model.addAttribute("emptyPhone",true);
+		  if(request.getUser().isEmpty()){
+			  model.addAttribute("emptyName",true);
 			  return reserveClient(id,tableId,model);
 		  }
 		  request.setId(tableId);
